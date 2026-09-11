@@ -21,16 +21,16 @@ cd mowftee-guild
 
 | Chuyên gia | Vai trò | Lĩnh vực chuyên môn |
 | :--- | :--- | :--- |
-| 🏛️ **`@tech-lead`** | 📐 Tech Lead | 🏗️ Kiến trúc hệ thống & Điều phối kỹ thuật |
-| 🎨 **`@frontend`** | 💻 Frontend Developer | 🌐 Phát triển giao diện & Trải nghiệm người dùng |
-| ⚙️ **`@backend`** | 🔌 Backend Architect | 🖥️ Dịch vụ máy chủ & Nền tảng API |
-| 🗄️ **`@database`** | 💾 Database Specialist | 📊 Thiết kế cơ sở dữ liệu & Tối ưu truy vấn |
-| ✨ **`@designer`** | 🎨 UI/UX Designer | 🖌️ Thiết kế hệ thống giao diện & Trải nghiệm thị giác |
-| 👁️ **`@code-reviewer`** | 🔍 Code Reviewer | 🛡️ Thẩm định mã nguồn & Chuẩn mực chất lượng code |
-| 🧐 **`@tester`** | 🧪 Reality Checker | 🎯 Kiểm thử phần mềm & Thẩm định nghiệm thu |
-| 🔐 **`@security`** | 🚨 AppSec Specialist | 🔒 An toàn thông tin & Bảo mật ứng dụng |
-| 🚀 **`@devops`** | 🐳 DevOps Engineer | ☁️ Hạ tầng máy chủ, Container & Vận hành triển khai |
-| 📚 **`@doc-writer`** | 📝 Technical Writer | 📖 Biên soạn tài liệu kỹ thuật & Bàn giao dự án |
+| 🏛️ **`@tech-lead`** |  Tech Lead |  Kiến trúc hệ thống & Điều phối kỹ thuật |
+| 🎨 **`@frontend`** |  Frontend Developer |  Phát triển giao diện & Trải nghiệm người dùng |
+| ⚙️ **`@backend`** |  Backend Architect | Dịch vụ máy chủ & Nền tảng API |
+| 🗄️ **`@database`** | Database Specialist |  Thiết kế cơ sở dữ liệu & Tối ưu truy vấn |
+| ✨ **`@designer`** |  UI/UX Designer |  Thiết kế hệ thống giao diện & Trải nghiệm thị giác |
+| 👁️ **`@code-reviewer`** |  Code Reviewer |  Thẩm định mã nguồn & Chuẩn mực chất lượng code |
+| 🧐 **`@tester`** |  Reality Checker |  Kiểm thử phần mềm & Thẩm định nghiệm thu |
+| 🔐 **`@security`** |  AppSec Specialist |  An toàn thông tin & Bảo mật ứng dụng |
+| 🚀 **`@devops`** |  DevOps Engineer |  Hạ tầng máy chủ, Container & Vận hành triển khai |
+| 📚 **`@doc-writer`** | Technical Writer |  Biên soạn tài liệu kỹ thuật & Bàn giao dự án |
 
 ---
 
