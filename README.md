@@ -40,6 +40,7 @@ cd mowftee-guild
 ./setup.sh install     # 📦 Cài đặt / cập nhật kỹ năng vào Antigravity
 ./setup.sh check       # 🔍 Kiểm tra tính toàn vẹn của các kỹ năng
 ./setup.sh uninstall   # 🧹 Gỡ bỏ hoàn toàn khỏi máy
+./setup.sh init [path] # 🧠 Khởi tạo bộ nhớ dự án (.memory/) cho thư mục mới
 ```
 
 ---
