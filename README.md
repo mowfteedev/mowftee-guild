@@ -1,6 +1,6 @@
 # ⚔️ mowftee-guild
 
-> 🛡️ Đội ngũ 10 đặc nhiệm AI tinh nhuệ được thiết kế cho Google Antigravity. 🇻🇳 100% Tiếng Việt.
+> 🛡️ Đội ngũ 10 đặc nhiệm AI tinh nhuệ được thiết kế cho Google Antigravity. Ý tưởng từ mô hình Agency Agents
 
 ---
 
