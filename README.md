@@ -34,6 +34,25 @@ cd mowftee-guild
 
 ---
 
+## 🛡️ Quy Trình Tác Chiến Khép Kín (Closed-Loop Gate System)
+
+`mowftee-guild` vận hành theo **Mô hình Tam Giác Tác Chiến**: Một giai đoạn không bao giờ do 1 người làm đơn độc, mà luôn có **Người Thực Thi Chính**, **Người Cố Vấn Phản Biện**, và **Người Gác Cổng Thẩm Định**:
+
+```text
+[Người Thực Thi (Lead)] <──Phản biện chéo──> [Người Cố Vấn (Advisor)]
+           │
+           ▼
+[Người Gác Cổng (Gatekeeper / Tester / Security)] ──▶ ĐẠT 100% ──▶ Mở cổng tiếp theo
+           │
+           └─── Phát hiện lỗi ──▶ [Vòng lặp tự sửa lỗi (Revision Cycle)]
+```
+
+- 🚀 [Kịch bản 01: Từ Ý Tưởng Đến MVP Chạy Thực Tế (5 Cổng Khép Kín)](workflows/01-tu-y-tuong-den-mvp.md)
+- ⚡ [Kịch bản 02: Bổ Sung Tính Năng Mới Chống Lỗi Hồi Quy (4 Cổng Khép Kín)](workflows/02-them-tinh-nang-moi.md)
+- 🛡️ [Kịch bản 03: Đại Phẫu Thuật Mã Nguồn, Tối Ưu & Phòng Thủ Chiều Sâu](workflows/03-tong-ve-sinh-va-bao-mat.md)
+
+---
+
 ## 🛠️ Quản Trị Hệ Thống (`setup.sh`)
 
 ```bash

@@ -64,6 +64,16 @@ case "$ACTION" in
       echo -e "  ${YELLOW}[!] Đã tồn tại:${RESET} .memory/progress.md (giữ nguyên)"
     fi
 
+    if [[ ! -f "$mem_dir/gate-checklist.md" ]]; then
+      cp "$TEMPLATES_DIR/gate-checklist-template.md" "$mem_dir/gate-checklist.md"
+      echo -e "  ${GREEN}[+] Đã tạo:${RESET} .memory/gate-checklist.md"
+    fi
+
+    if [[ ! -f "$mem_dir/test-evidence.md" ]]; then
+      cp "$TEMPLATES_DIR/test-evidence-template.md" "$mem_dir/test-evidence.md"
+      echo -e "  ${GREEN}[+] Đã tạo:${RESET} .memory/test-evidence.md"
+    fi
+
     if [[ ! -f "$mem_dir/adr/0001-khoi-tao-du-an.md" ]]; then
       cp "$TEMPLATES_DIR/adr-template.md" "$mem_dir/adr/0001-khoi-tao-du-an.md"
       sed -i 's/\[Mã số\]/0001/g' "$mem_dir/adr/0001-khoi-tao-du-an.md"
