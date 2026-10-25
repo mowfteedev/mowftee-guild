@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Phát triển máy chủ"
+  short_description: "Phát triển máy chủ cho dự án mowftee-guild"
+  default_prompt: "Dùng $backend để xử lý phần phát triển máy chủ theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

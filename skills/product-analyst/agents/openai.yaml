@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Phân tích yêu cầu"
+  short_description: "Phân tích yêu cầu cho dự án mowftee-guild"
+  default_prompt: "Dùng $product-analyst để xử lý phần phân tích yêu cầu theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

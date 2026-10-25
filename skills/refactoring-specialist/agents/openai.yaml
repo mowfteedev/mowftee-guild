@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Tái cấu trúc có kiểm soát"
+  short_description: "Tái cấu trúc có kiểm soát cho dự án mowftee-guild"
+  default_prompt: "Dùng $refactoring-specialist để xử lý phần tái cấu trúc có kiểm soát theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Bảo trì và đánh giá skill"
+  short_description: "Bảo trì và đánh giá skill cho dự án mowftee-guild"
+  default_prompt: "Dùng $skill-maintainer để xử lý phần bảo trì và đánh giá skill theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Nghiệm thu và kiểm thử khám phá"
+  short_description: "Nghiệm thu và kiểm thử khám phá cho dự án mowftee-guild"
+  default_prompt: "Dùng $tester để xử lý phần nghiệm thu và kiểm thử khám phá theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Điều phối kỹ thuật"
+  short_description: "Điều phối kỹ thuật cho dự án mowftee-guild"
+  default_prompt: "Dùng $tech-lead để xử lý phần điều phối kỹ thuật theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

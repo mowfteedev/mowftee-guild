@@ -1,0 +1,36 @@
+name: Validate guild
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: guild-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.9', '3.14']
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Validate source catalog and self-contained skills
+        run: python scripts/guild.py validate
+      - name: Validate Bash launcher
+        run: bash -n setup.sh
+      - name: Test isolated installation lifecycle
+        run: python -m unittest discover -s tests -v
+      - name: Check whitespace errors
+        run: git show --format= --check HEAD

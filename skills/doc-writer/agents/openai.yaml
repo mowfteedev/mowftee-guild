@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Tài liệu và bàn giao"
+  short_description: "Tài liệu và bàn giao cho dự án mowftee-guild"
+  default_prompt: "Dùng $doc-writer để xử lý phần tài liệu và bàn giao theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

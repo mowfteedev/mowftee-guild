@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Di chuyển dữ liệu"
+  short_description: "Di chuyển dữ liệu cho dự án mowftee-guild"
+  default_prompt: "Dùng $migration-specialist để xử lý phần di chuyển dữ liệu theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

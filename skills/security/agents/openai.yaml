@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Bảo mật ứng dụng"
+  short_description: "Bảo mật ứng dụng cho dự án mowftee-guild"
+  default_prompt: "Dùng $security để xử lý phần bảo mật ứng dụng theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

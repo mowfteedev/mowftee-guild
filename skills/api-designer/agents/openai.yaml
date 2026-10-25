@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Thiết kế hợp đồng API"
+  short_description: "Thiết kế hợp đồng API cho dự án mowftee-guild"
+  default_prompt: "Dùng $api-designer để xử lý phần thiết kế hợp đồng api theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

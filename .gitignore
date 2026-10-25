@@ -13,3 +13,10 @@ Thumbs.db
 *.log
 tmp/
 scratch/
+
+# Python development artifacts
+__pycache__/
+*.py[cod]
+.venv/
+.coverage
+htmlcov/

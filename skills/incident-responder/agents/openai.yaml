@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guild · Ứng phó sự cố"
+  short_description: "Ứng phó sự cố cho dự án mowftee-guild"
+  default_prompt: "Dùng $incident-responder để xử lý phần ứng phó sự cố theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."
