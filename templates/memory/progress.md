@@ -1,5 +1,6 @@
 # Tiến độ: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Cập nhật: {{DATE_UTC}}. Owner: tech-lead.
 
 ## Phạm vi phiên làm việc
@@ -22,7 +23,7 @@ Trạng thái công việc: QUEUED, IN_PROGRESS, IN_REVIEW, BLOCKED, DONE. DONE 
 | Thời điểm | Tiêu chí bị lỗi | Bằng chứng | Owner sửa | Vòng | Kết quả kiểm lại |
 | --- | --- | --- | --- | --- | --- |
 
-Giới hạn ba vòng cho cùng tiêu chí; hai vòng không tiến bộ thì chuyển owner hoặc báo quyết định cần hỗ trợ. Không bỏ test để đóng việc.
+Nếu chưa giải quyết được, ghi cách đã thử và hướng tiếp theo; không bỏ test chỉ để đánh dấu hoàn thành.
 
 ## Bàn giao và việc chưa hoàn tất
 

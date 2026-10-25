@@ -1,4 +1,0 @@
-interface:
-  display_name: "Guild · Thiết kế dữ liệu"
-  short_description: "Thiết kế dữ liệu cho dự án mowftee-guild"
-  default_prompt: "Dùng $database để xử lý phần thiết kế dữ liệu theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

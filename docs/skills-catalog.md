@@ -1,59 +1,31 @@
-# Danh mục skill và phân công trách nhiệm
+# Danh sách skill
 
-Mỗi skill là một năng lực có thể được chọn riêng. Không cần chạy toàn bộ guild cho mỗi yêu cầu. Danh mục có cấu trúc cho CLI nằm ở [catalog.json](../catalog.json).
+Các skill là những góc nhìn chuyên môn để một người dùng với cùng trợ lý. Không cần gọi đủ bộ hoặc có thêm người quản lý.
 
-| Tên skill | Dùng để làm gì, vai trò trong dự án | Nhóm |
-| --- | --- | --- |
-| [tech-lead](../skills/tech-lead/SKILL.md) | **Điều phối kỹ thuật** — Chịu trách nhiệm kế hoạch thực thi, phân công và trạng thái tổng thể của một đầu việc. Chọn số vai trò theo phạm vi thực tế, không triệu hồi toàn bộ guild theo mặc định. | planning |
-| [product-analyst](../skills/product-analyst/SKILL.md) | **Phân tích yêu cầu** — Biến yêu cầu kinh doanh thành phạm vi, ví dụ hành vi và tiêu chí nghiệm thu có thể đối chiếu. | planning |
-| [software-architect](../skills/software-architect/SKILL.md) | **Kiến trúc phần mềm** — Chịu trách nhiệm tính nhất quán của kiến trúc và các đánh đổi có thể vận hành được trong ràng buộc thật. | planning |
-| [api-designer](../skills/api-designer/SKILL.md) | **Thiết kế hợp đồng API** — Chịu trách nhiệm hợp đồng dữ liệu và hành vi công khai giữa client, server và đối tác. | engineering |
-| [designer](../skills/designer/SKILL.md) | **Thiết kế UI và UX** — Chịu trách nhiệm quyết định trải nghiệm và đặc tả thiết kế có thể triển khai, phù hợp sản phẩm. | experience |
-| [frontend](../skills/frontend/SKILL.md) | **Phát triển giao diện** — Chịu trách nhiệm giao diện hoạt động đúng với dữ liệu thật, trạng thái bất đồng bộ và thiết bị mục tiêu. | engineering |
-| [backend](../skills/backend/SKILL.md) | **Phát triển máy chủ** — Chịu trách nhiệm tính đúng đắn nghiệp vụ và các side effect của dịch vụ máy chủ. | engineering |
-| [database](../skills/database/SKILL.md) | **Thiết kế dữ liệu** — Chịu trách nhiệm mô hình dữ liệu, tính toàn vẹn, đặc tính truy vấn và lựa chọn lưu trữ. | engineering |
-| [migration-specialist](../skills/migration-specialist/SKILL.md) | **Di chuyển dữ liệu** — Chịu trách nhiệm thứ tự chuyển đổi dữ liệu và khả năng phục hồi khi ứng dụng nhiều phiên bản cùng hoạt động. | engineering |
-| [test-automator](../skills/test-automator/SKILL.md) | **Tự động hóa kiểm thử** — Chịu trách nhiệm độ tin cậy và giá trị phát hiện lỗi của bộ test tự động. | quality |
-| [tester](../skills/tester/SKILL.md) | **Nghiệm thu và kiểm thử khám phá** — Chịu trách nhiệm kết luận nghiệm thu trong phạm vi đã kiểm tra, gắn với commit hoặc snapshot cụ thể. | quality |
-| [code-reviewer](../skills/code-reviewer/SKILL.md) | **Thẩm định mã nguồn** — Chịu trách nhiệm phát hiện có cơ sở trong thay đổi mã nguồn và quyết định review có phạm vi. | quality |
-| [security](../skills/security/SKILL.md) | **Bảo mật ứng dụng** — Chịu trách nhiệm mô hình đe dọa, kiểm soát bảo mật và bằng chứng khai thác hoặc giảm thiểu trong phạm vi được phép. | quality |
-| [dependency-auditor](../skills/dependency-auditor/SKILL.md) | **Kiểm toán phụ thuộc** — Chịu trách nhiệm danh mục phụ thuộc có phiên bản cụ thể và kế hoạch xử lý rủi ro từ dependency. | quality |
-| [accessibility](../skills/accessibility/SKILL.md) | **Khả năng tiếp cận** — Chịu trách nhiệm bằng chứng về khả năng sử dụng với bàn phím và công nghệ hỗ trợ trong phạm vi được chọn. | experience |
-| [performance](../skills/performance/SKILL.md) | **Hiệu năng và đo tải** — Chịu trách nhiệm phép đo đáng tin cậy và kết luận trước/sau cho một mục tiêu hiệu năng cụ thể. | quality |
-| [devops](../skills/devops/SKILL.md) | **Hạ tầng và CI/CD** — Chịu trách nhiệm pipeline và môi trường triển khai có thể tái lập, quan sát và phục hồi. | operations |
-| [sre](../skills/sre/SKILL.md) | **Độ tin cậy và quan sát** — Chịu trách nhiệm tín hiệu vận hành phản ánh trải nghiệm người dùng và khả năng phục hồi đã kiểm chứng. | operations |
-| [incident-responder](../skills/incident-responder/SKILL.md) | **Ứng phó sự cố** — Chịu trách nhiệm ưu tiên giảm tác động, giữ timeline và đưa ra quyết định dựa trên tín hiệu khi có sự cố. | operations |
-| [release-manager](../skills/release-manager/SKILL.md) | **Quản lý phát hành** — Chịu trách nhiệm quyết định sẵn sàng phát hành trong phạm vi bằng chứng và quyền thực tế. | operations |
-| [doc-writer](../skills/doc-writer/SKILL.md) | **Tài liệu và bàn giao** — Chịu trách nhiệm tài liệu giúp người tiếp nhận làm đúng và hiểu giới hạn của sản phẩm. | delivery |
-| [skill-maintainer](../skills/skill-maintainer/SKILL.md) | **Bảo trì và đánh giá skill** — Chịu trách nhiệm khả năng tìm đúng skill, ranh giới vai trò và tính kiểm chứng được của hướng dẫn. | delivery |
-| [refactoring-specialist](../skills/refactoring-specialist/SKILL.md) | **Tái cấu trúc có kiểm soát** — Chịu trách nhiệm thay đổi cấu trúc có bằng chứng giữ semantics và giảm một vấn đề bảo trì cụ thể. | engineering |
-
-## Các ranh giới cần phân biệt
-
-| Vai trò | Trách nhiệm phân biệt |
+| Tên skill | Dùng để làm gì, vai trò trong dự án |
 | --- | --- |
-| tech-lead / software-architect | Điều phối công việc / quyết định và kiểm chứng kiến trúc. |
-| api-designer / backend | Định nghĩa contract / triển khai nghiệp vụ theo contract. |
-| database / migration-specialist | Mô hình dữ liệu và query / thứ tự chuyển đổi dữ liệu hiện có. |
-| test-automator / tester | Xây bộ test / nghiệm thu AC và khám phá lỗi dựa trên evidence. |
-| designer / frontend / accessibility | Quyết định UX và đặc tả / triển khai / kiểm chứng khả năng tiếp cận. |
-| security / dependency-auditor | Trust boundary và kiểm soát ứng dụng / dependency, advisory và provenance. |
-| devops / sre / incident-responder | Pipeline và hạ tầng / độ tin cậy thường nhật / xử lý sự cố đang diễn ra. |
-| tester / release-manager | Kết luận chất lượng trong phạm vi đã kiểm tra / tổng hợp điều kiện và hành động phát hành được phép. |
-| refactoring-specialist / performance | Bảo toàn hành vi khi đổi cấu trúc / đo và cải thiện mục tiêu hiệu năng. |
+| [accessibility](../skills/accessibility/SKILL.md) | **Khả năng tiếp cận** — Đánh giá và sửa accessibility cho giao diện web: keyboard, focus, semantic, thông báo và tương phản; không thay designer quyết định thẩm mỹ hoặc tuyên bố chứng nhận từ scanner. |
+| [api-designer](../skills/api-designer/SKILL.md) | **Thiết kế hợp đồng API** — Thiết kế hoặc thay đổi API contract, schema, mã lỗi và tương thích phiên bản trước khi nối frontend với backend; không triển khai toàn bộ nghiệp vụ. |
+| [backend](../skills/backend/SKILL.md) | **Phát triển máy chủ** — Triển khai hoặc sửa logic nghiệp vụ, endpoint và tích hợp máy chủ; dùng khi thay đổi hành vi server, không thay api-designer định nghĩa contract hay database thiết kế dữ liệu. |
+| [code-reviewer](../skills/code-reviewer/SKILL.md) | **Thẩm định mã nguồn** — Rà soát diff và vùng ảnh hưởng để tìm lỗi đúng đắn, bảo mật hoặc bảo trì trước merge; không thay QA kiểm nghiệm runtime hoặc mở rộng thành audit toàn repo ngoài yêu cầu. |
+| [database](../skills/database/SKILL.md) | **Thiết kế dữ liệu** — Thiết kế schema, ràng buộc dữ liệu, index và truy vấn theo workload thực tế; không tự chạy migration production hoặc thay migration-specialist lập kế hoạch chuyển đổi. |
+| [dependency-auditor](../skills/dependency-auditor/SKILL.md) | **Kiểm toán phụ thuộc** — Kiểm kê dependency, advisory, provenance và thay đổi phiên bản khi audit hoặc nâng cấp thư viện; không tự coi mọi CVE là khai thác được hoặc nâng cấp phá vỡ API ngoài phạm vi. |
+| [designer](../skills/designer/SKILL.md) | **Thiết kế UI và UX** — Thiết kế luồng trải nghiệm, hệ thống token và đặc tả thành phần cho màn hình mới hoặc thay đổi giao diện; không thay frontend triển khai hay thay accessibility kiểm định. |
+| [devops](../skills/devops/SKILL.md) | **Hạ tầng và CI/CD** — Xây dựng hoặc sửa container, CI/CD, cấu hình triển khai và hạ tầng lặp lại được; không tự quyết định phát hành hoặc thực thi production khi chưa có quyền. |
+| [doc-writer](../skills/doc-writer/SKILL.md) | **Tài liệu và bàn giao** — Viết hoặc cập nhật hướng dẫn sử dụng, tài liệu kỹ thuật, API và bàn giao từ hành vi thực tế; không dùng mẫu kết quả đẹp thay cho kiểm chứng. |
+| [frontend](../skills/frontend/SKILL.md) | **Phát triển giao diện** — Triển khai và sửa giao diện, state, kết nối API và responsive theo design system hiện có; không tự định nghĩa lại sản phẩm hoặc thay kiểm định khả năng tiếp cận. |
+| [incident-responder](../skills/incident-responder/SKILL.md) | **Ứng phó sự cố** — Điều tra và điều phối giảm thiểu một sự cố đang diễn ra hoặc viết postmortem; không dùng cho review bảo mật thường kỳ hay tự sửa production ngoài quyền hiện có. |
+| [migration-specialist](../skills/migration-specialist/SKILL.md) | **Di chuyển dữ liệu** — Lập và kiểm chứng migration schema hoặc dữ liệu, backfill, cutover và phục hồi cho hệ thống đang có dữ liệu; không thay database quyết định mô hình dữ liệu. |
+| [performance](../skills/performance/SKILL.md) | **Hiệu năng và đo tải** — Chẩn đoán bottleneck và kiểm chứng tối ưu CPU, bộ nhớ, query, bundle hoặc độ trễ khi có mục tiêu hiệu năng; không tự bắn tải production hoặc áp một ngân sách chung. |
+| [product-analyst](../skills/product-analyst/SKILL.md) | **Phân tích yêu cầu** — Làm rõ mục tiêu sản phẩm, luồng nghiệp vụ và tiêu chí nghiệm thu trước một tính năng hoặc MVP; không chọn hạ tầng hay quyết định kiến trúc thay kỹ sư. |
+| [refactoring-specialist](../skills/refactoring-specialist/SKILL.md) | **Tái cấu trúc có kiểm soát** — Tái cấu trúc code và giảm nợ kỹ thuật trong phạm vi đã chọn, giữ hành vi quan sát được; không tự thêm feature hoặc sửa API công khai ngoài scope. |
+| [release-manager](../skills/release-manager/SKILL.md) | **Quản lý phát hành** — Tổng hợp điều kiện phát hành, phiên bản, rollout và rollback trước một release; không thay devops dựng pipeline hoặc tự merge/deploy ngoài yêu cầu. |
+| [security](../skills/security/SKILL.md) | **Bảo mật ứng dụng** — Threat model hoặc rà soát bảo mật ứng dụng khi có yêu cầu hay thay đổi ranh giới tin cậy, xác thực, phân quyền và dữ liệu nhạy cảm; không tự làm pentest lên hệ thống thật. |
+| [skill-maintainer](../skills/skill-maintainer/SKILL.md) | **Bảo trì và đánh giá skill** — Tạo, phân tách hoặc đánh giá skill và quy trình của guild khi thay đổi hành vi agent; không dùng để tự cài plugin hoặc thêm quyền thực thi. |
+| [software-architect](../skills/software-architect/SKILL.md) | **Kiến trúc phần mềm** — Đánh giá và thiết kế ranh giới module, luồng dữ liệu, độ tin cậy và ADR cho thay đổi kiến trúc; không điều phối toàn bộ công việc hay ép một stack cố định. |
+| [sre](../skills/sre/SKILL.md) | **Độ tin cậy và quan sát** — Thiết kế SLI/SLO, telemetry, alert, capacity và diễn tập phục hồi khi chuẩn bị hoặc cải thiện vận hành; không thay incident-responder chỉ huy sự cố đang diễn ra. |
+| [tech-lead](../skills/tech-lead/SKILL.md) | **Điều phối kỹ thuật** — Lập kế hoạch kỹ thuật và chọn góc nhìn chuyên môn cho yêu cầu nhiều phần; dùng để chia việc, quản lý phụ thuộc và tổng hợp quyết định trong dự án cá nhân. |
+| [test-automator](../skills/test-automator/SKILL.md) | **Tự động hóa kiểm thử** — Thiết kế và viết unit, integration, contract hoặc E2E tests có khả năng tái hiện; không tự cấp nghiệm thu sản phẩm thay tester. |
+| [tester](../skills/tester/SKILL.md) | **Nghiệm thu và kiểm thử khám phá** — Kiểm tra lại tính năng hoặc bản sửa, khám phá lỗi biên và đối chiếu tiêu chí nghiệm thu với bằng chứng; dùng khi cần xác minh kết quả triển khai. |
 
-## Profiles cài đặt
-
-Profile chỉ chọn tập skill để cài, không tự tạo agent, cấp quyền hoặc khởi chạy workflow.
-
-- **core** (6): `tech-lead`, `frontend`, `backend`, `code-reviewer`, `tester`, `doc-writer`.
-
-- **web** (14): `product-analyst`, `software-architect`, `api-designer`, `designer`, `frontend`, `backend`, `database`, `migration-specialist`, `test-automator`, `tester`, `code-reviewer`, `security`, `accessibility`, `doc-writer`.
-
-- **quality** (8): `test-automator`, `tester`, `code-reviewer`, `security`, `dependency-auditor`, `accessibility`, `performance`, `skill-maintainer`.
-
-- **operations** (6): `devops`, `sre`, `incident-responder`, `release-manager`, `security`, `doc-writer`.
-
-- **maintenance** (6): `refactoring-specialist`, `dependency-auditor`, `performance`, `code-reviewer`, `test-automator`, `tester`.
-
-- **all** (23): `tech-lead`, `product-analyst`, `software-architect`, `api-designer`, `designer`, `frontend`, `backend`, `database`, `migration-specialist`, `test-automator`, `tester`, `code-reviewer`, `security`, `dependency-auditor`, `accessibility`, `performance`, `devops`, `sre`, `incident-responder`, `release-manager`, `doc-writer`, `skill-maintainer`, `refactoring-specialist`.
+`test-automator` tập trung viết test; `tester` kiểm lại kết quả. `database` thiết kế dữ liệu; `migration-specialist` lo chuyển đổi dữ liệu hiện có. `devops` dựng môi trường; `sre` theo dõi độ tin cậy; `incident-responder` xử lý sự cố. Những ranh giới này giúp chọn đúng kiến thức, không tạo một bộ máy quản lý.

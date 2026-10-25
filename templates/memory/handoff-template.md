@@ -1,5 +1,6 @@
 # Bàn giao: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Tạo: {{DATE_UTC}}. Trạng thái: DRAFT.
 
 - Từ / tới / owner: chưa phân công.

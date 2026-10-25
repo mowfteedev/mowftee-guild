@@ -1,4 +1,0 @@
-interface:
-  display_name: "Guild · Thẩm định mã nguồn"
-  short_description: "Thẩm định mã nguồn cho dự án mowftee-guild"
-  default_prompt: "Dùng $code-reviewer để xử lý phần thẩm định mã nguồn theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

@@ -1,106 +1,57 @@
 # ⚔️ mowftee-guild
 
-Bộ 23 skill tiếng Việt để phối hợp phát triển phần mềm với trách nhiệm rõ ràng, tiêu chí nghiệm thu và bằng chứng thực tế. Dùng dưới dạng thư mục skill cho Codex hoặc Google Antigravity; chọn một nhóm nhỏ theo đầu việc.
+Bộ **23 skill tiếng Việt** để dùng với Codex hoặc Google Antigravity. Mỗi skill là hướng dẫn Markdown theo một chuyên môn: lập kế hoạch, giao diện, backend, dữ liệu, kiểm thử, vận hành… Một trợ lý có thể lần lượt dùng các góc nhìn đó; không cần dựng đội agent hay hệ thống quản lý riêng.
 
-## Bắt đầu
-
-Yêu cầu: Git để tải repo; Bash và Python 3.9+ để dùng CLI. CLI chỉ dùng thư viện chuẩn, không cần pip/npm. Những công cụ như browser, Docker, test runner chỉ cần khi dự án thực tế sử dụng.
+## Cài và gỡ
 
 ```bash
 git clone https://github.com/mowfteedev/mowftee-guild.git
 cd mowftee-guild
-./setup.sh validate
-./setup.sh list
+
+# Codex
+./setup.sh install codex
+./setup.sh uninstall codex
+
+# Google Antigravity App/IDE
+./setup.sh install antigravity
+./setup.sh uninstall antigravity
 ```
 
-Xem kế hoạch cài trước khi ghi file:
+Antigravity CLI dùng `./setup.sh install antigravity-cli` và `./setup.sh uninstall antigravity-cli`. Bỏ tên công cụ thì mặc định Antigravity App/IDE. Script chỉ cần Bash và các lệnh chép/xóa thông thường, không cần Python, pip hay npm.
 
-```bash
-./setup.sh install --tool codex --profile core --dry-run
-./setup.sh install --tool codex --profile core
-./setup.sh check --tool codex
-```
+**Cập nhật:** sửa file trong repo hoặc kéo bản mới về, rồi chạy lại lệnh `install`. Lệnh này thay bản đã chép bằng nội dung hiện tại. Thư mục trùng tên từ nguồn khác được giữ nguyên; script báo vị trí để anh tự xem lại. Xem [chi tiết cài đặt](docs/installation.md).
 
-Dùng Antigravity App/IDE thay `--tool codex` bằng `--tool antigravity`; Antigravity CLI dùng `--tool antigravity-cli`. Không truyền `--tool` thì giữ mặc định Antigravity App/IDE. Cài mặc định profile `core` gồm 6 skill; `--profile all` chọn toàn bộ 23.
+## Gọi skill để dùng
 
-Cài riêng cho một dự án:
-
-```bash
-./setup.sh install --tool codex --scope workspace --workspace /path/to/project --profile web --dry-run
-./setup.sh init /path/to/project --name "Tên dự án" --dry-run
-```
-
-Bỏ `--dry-run` sau khi đã xem đúng đường dẫn và danh sách. `init` tạo bộ nhớ dự án và giữ nguyên file đã có; không tự điền PASS hay chọn stack. Chạy không có tham số chỉ hiển thị trợ giúp.
-
-## Chọn đúng vai trò
-
-[Danh mục đầy đủ: tên, mục đích và trách nhiệm 23 skill](docs/skills-catalog.md).
-
-| Nhóm | Vai trò |
-| --- | --- |
-| Phân tích và điều phối | tech-lead, product-analyst, software-architect |
-| Thiết kế và trải nghiệm | designer, accessibility |
-| Triển khai | api-designer, frontend, backend, database, migration-specialist, refactoring-specialist |
-| Kiểm định | test-automator, tester, code-reviewer, security, dependency-auditor, performance |
-| Vận hành và phát hành | devops, sre, incident-responder, release-manager |
-| Tài liệu và bảo trì skill | doc-writer, skill-maintainer |
-
-Profile cài đặt: `core`, `web`, `quality`, `operations`, `maintenance`, `all`. Có thể chọn chính xác bằng `--skills backend,api-designer,test-automator`. Cài thêm một nhóm không gỡ nhóm đã cài trước đó.
-
-## Cách sử dụng
-
-Trong Codex CLI/IDE, dùng `$tech-lead`, `$backend` hoặc chọn skill từ `/skills`. Trong Antigravity App, dùng slash command như `/tech-lead`; cách hiển thị cụ thể tùy host. Skill cũng có thể được host chọn theo description. Xem [hướng dẫn host và ví dụ prompt](docs/usage.md).
-
-Ví dụ yêu cầu:
+Trong Codex, gọi như `$backend`, `$frontend`, `$tester` hoặc chọn từ `/skills`. Trong Antigravity App, gọi như `/backend`. Ví dụ:
 
 ```text
-Dùng $tech-lead để phân tích yêu cầu thêm tính năng giỏ hàng vào dự án này.
-Đọc hiện trạng, ghi phạm vi và AC, chọn những vai trò cần thiết.
-Chỉ sửa local; chưa push, merge hoặc deploy. Báo bằng chứng và phần chưa kiểm tra.
+Dùng $backend để sửa lỗi tạo đơn hàng bị lặp khi gửi lại request.
+Đọc code hiện tại, sửa trong phạm vi liên quan và kiểm tra lại kết quả.
 ```
 
-Đổi `$tech-lead` thành `/tech-lead` khi dùng Antigravity App. Không cần gọi toàn bộ guild cho một sửa đổi nhỏ.
+Chỉ gọi skill phù hợp đầu việc. Không bắt buộc chạy đủ quy trình, tạo báo cáo hay có người duyệt khác. Skill vẫn cần làm rõ điều chưa biết, kiểm chứng kết quả thật và tôn trọng phạm vi anh đã yêu cầu.
 
-## Chất lượng được kiểm soát thế nào?
+👉 [Danh sách 23 skill và vai trò](docs/skills-catalog.md) · [Ví dụ sử dụng](docs/usage.md)
 
-- Mỗi skill có đầu vào, ranh giới với vai trò khác, quy trình, đầu ra và điều kiện bàn giao.
-- Đọc chi tiết theo nhu cầu: entrypoint gọn; tình huống biên nằm trong `references/runbook.md` tự chứa cùng skill.
-- Kết quả dùng PASS / FAIL / BLOCKED / NOT_RUN / NOT_APPLICABLE; PASS cần gắn với snapshot và evidence.
-- Việc nhiều rủi ro cần reviewer độc lập thực sự; tự kiểm tra không được đổi tên thành review độc lập.
-- Vòng sửa có giới hạn; phần không hội tụ được báo rõ, không cắt AC để qua cổng.
+## Nội dung trong repo
 
-[Quy tắc phối hợp và quality gates](docs/protocol.md) · [Phân loại rủi ro](docs/risk-and-evidence.md).
+- `skills/`: `SKILL.md`, runbook chuyên môn và license đi kèm; đây là phần được chép vào host.
+- `workflows/`: các trình tự tham khảo cho MVP, tính năng mới, sửa lỗi, review, vận hành. Dùng khi thấy hữu ích.
+- `templates/memory/`: mẫu ghi chú dự án tùy chọn, có thể copy và điền bằng tay khi cần lưu kiến trúc hoặc tiến độ.
+- `setup.sh`: chép vào và gỡ ra. Không có manifest, profile, hash database, transaction hay dịch vụ chạy nền.
 
-Đây là bộ hướng dẫn và công cụ quản lý file cục bộ. Repo không chứa runtime đa agent, không tự tạo reviewer, không tự enforce các cổng bằng một hệ thống điều phối. Chất lượng hành vi cần được đánh giá trên host thực tế. Plugin/MCP chưa được triển khai trong phiên bản này.
+Độ chi tiết nằm trong kiến thức và cách làm việc của skill. Các tài liệu phụ không phải thủ tục bắt buộc để sử dụng. Plugin/MCP chưa nằm trong bản này.
 
-## Workflow
+## Tài liệu và kiểm tra
 
-| Tình huống | Quy trình |
-| --- | --- |
-| Xây sản phẩm mới | [Từ ý tưởng đến MVP](workflows/01-tu-y-tuong-den-mvp.md) |
-| Thêm tính năng | [Thay đổi tương thích và hồi quy](workflows/02-them-tinh-nang-moi.md) |
-| Dọn nợ kỹ thuật / audit | [Bảo trì và tối ưu](workflows/03-tong-ve-sinh-va-bao-mat.md) |
-| Sửa lỗi | [Tái hiện đến kiểm chứng](workflows/04-sua-loi.md) |
-| Phát hành | [Review, rollout và phục hồi](workflows/05-phat-hanh.md) |
-| Sự cố | [Ứng phó và postmortem](workflows/06-su-co.md) |
-| Sửa bộ skill | [Phát triển và đánh giá skill](workflows/07-cai-tien-skill.md) |
+[Nguyên tắc sử dụng](docs/protocol.md) · [Thay đổi từ bản quản lý cũ](docs/migration-v2.md) · [Nguồn tham khảo](docs/sources.md) · [Kiểm chứng](docs/verification.md) · [Changelog](CHANGELOG.md)
 
-Workflow và tài liệu nằm trong bản clone; lệnh `install` chỉ sao chép các thư mục skill được chọn. Mỗi skill có đủ runbook riêng để không phụ thuộc đường dẫn Desktop hay file ngoài bundle.
-
-## CLI và kiểm tra
+Để kiểm tra script khi chỉnh sửa repo:
 
 ```bash
-./setup.sh --help
-./setup.sh install --help
-./setup.sh validate
+bash -n setup.sh
 python3 -m unittest discover -s tests -v
-./setup.sh uninstall --tool codex --dry-run
 ```
 
-[Hướng dẫn cài, cập nhật, sao lưu, gỡ và xử lý sự cố](docs/installation.md) · [Nâng cấp từ v1](docs/migration-v2.md) · [Giới hạn đã biết](docs/limitations.md) · [Cách đánh giá hành vi skill](evals/README.md).
-
-## Phát triển và nguồn tham khảo
-
-[CONTRIBUTING](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) · [Kiến trúc repo](docs/repository-design.md) · [Nguồn và provenance](docs/sources.md) · [Báo lỗi bảo mật](SECURITY.md).
-
-Mã và nội dung gốc của dự án phát hành theo [MIT License](LICENSE). Các nguồn tham khảo được ghi công theo commit; không nhập toàn bộ kho bên thứ ba vào dự án.
+Python chỉ dùng cho bộ test phát triển, không cần khi cài/gỡ. Mã và nội dung gốc phát hành theo [MIT License](LICENSE).

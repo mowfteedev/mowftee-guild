@@ -1,5 +1,6 @@
 # Bằng chứng kiểm chứng: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Tạo: {{DATE_UTC}}. Trạng thái tổng hợp: NOT_RUN.
 
 ## Phạm vi
@@ -7,7 +8,7 @@ Tạo: {{DATE_UTC}}. Trạng thái tổng hợp: NOT_RUN.
 - AC / task / bug: chưa chọn.
 - Commit, artifact digest hoặc snapshot + dirty state: chưa ghi nhận.
 - OS, runtime, dependency và dữ liệu test: chưa ghi nhận.
-- Người thực hiện và mức độc lập với người viết: chưa ghi nhận.
+- Người kiểm tra và cách đã thử: chưa ghi nhận.
 
 ## Kiểm tra thực tế
 

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Guild · Quản lý phát hành"
-  short_description: "Quản lý phát hành cho dự án mowftee-guild"
-  default_prompt: "Dùng $release-manager để xử lý phần quản lý phát hành theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

@@ -1,5 +1,6 @@
 # Hồ sơ phát hành: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Tạo: {{DATE_UTC}}. Owner: release-manager. Kết luận: NOT_RUN.
 
 ## Định danh và phạm vi

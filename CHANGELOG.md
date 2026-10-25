@@ -1,24 +1,15 @@
 # Changelog
 
-## 2.0.0 — 2026-10-26
+## Bản dùng cá nhân — 2026-10-26
 
-### Added
+- Giữ 23 skill chuyên môn, mỗi skill có hướng dẫn và runbook tự chứa.
+- Rút phần cài/gỡ về một script Bash chép/xóa thư mục, hỗ trợ Codex và Antigravity.
+- Bỏ CLI Python, catalog, profile, manifest, hash, transaction và dịch vụ quản lý không cần thiết.
+- Bỏ metadata UI tùy chọn và bộ đăng ký behavioral eval. Không tuyên bố skill đã được benchmark độc lập.
+- Diễn đạt lại vai trò cho một người dùng với cùng trợ lý; bỏ yêu cầu reviewer riêng, cổng duyệt và số vòng sửa cứng.
+- Giữ workflow và mẫu memory dưới dạng tài liệu tùy chọn.
+- Script giữ thư mục từ nguồn khác, không ghi qua symlink và không thay hoặc gỡ chính repo nguồn.
 
-- 13 vai trò mới: product-analyst, software-architect, api-designer, migration-specialist, test-automator, dependency-auditor, accessibility, performance, sre, incident-responder, release-manager, skill-maintainer, refactoring-specialist.
-- Runbook tự chứa và metadata Codex cho toàn bộ 23 skill; catalog cùng 6 profile.
-- CLI quản lý cài/check/gỡ theo ownership/hash, dry-run, backup khi force, staging và phục hồi lỗi thông thường.
-- Đích Codex, Antigravity App/IDE, Antigravity CLI và workspace; chọn skill chính xác.
-- Memory templates cho requirements, handoff, risk, release và incident; tổng cộng 10 mẫu.
-- Workflow sửa lỗi, phát hành, sự cố, cải thiện skill; kịch bản behavioral eval; test CLI và CI.
-- Tài liệu sử dụng, nâng cấp, provenance, giới hạn và kiểm chứng phiên bản.
+## Bản mở rộng ban đầu
 
-### Changed
-
-- Viết lại 10 skill cũ theo trách nhiệm và evidence; bỏ persona phóng đại và tool/model giả định.
-- Tách tiêu chí theo rủi ro; không áp stack, số đo hay tỷ lệ test tuyệt đối cho mọi dự án.
-- Mọi mẫu kiểm chứng bắt đầu NOT_RUN; không có số liệu PASS minh họa dễ nhầm với kết quả thật.
-- Không argument hiển thị help; install mặc định core thay vì cài toàn bộ. Check có mã thoát thất bại khi phát hiện sai lệch.
-
-### Compatibility
-
-Đọc [migration-v2](docs/migration-v2.md) trước khi thay bản v1 không có manifest. Cài đặt thật trên máy và plugin/MCP không tự được kích hoạt khi cập nhật repo. Không tuyên bố behavioral eval hoặc GUI host đã chạy chỉ vì CI tĩnh thành công.
+Mở từ 10 lên 23 góc nhìn chuyên môn: phân tích, kiến trúc, API, UI/UX, lập trình, dữ liệu, kiểm thử, bảo mật, hiệu năng, vận hành và tài liệu. Nội dung tham khảo được ghi ở [sources](docs/sources.md).

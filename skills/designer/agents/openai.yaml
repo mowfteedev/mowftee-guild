@@ -1,4 +1,0 @@
-interface:
-  display_name: "Guild · Thiết kế UI và UX"
-  short_description: "Thiết kế UI và UX cho dự án mowftee-guild"
-  default_prompt: "Dùng $designer để xử lý phần thiết kế ui và ux theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

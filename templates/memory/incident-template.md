@@ -1,5 +1,6 @@
 # Hồ sơ sự cố: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Tạo: {{DATE_UTC}}. Owner: incident-responder. Trạng thái: CHƯA ĐÁNH GIÁ.
 
 ## Tác động và quyền xử lý

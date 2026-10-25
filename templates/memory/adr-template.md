@@ -1,7 +1,8 @@
 # ADR-{{ADR_ID}}: {{ADR_TITLE}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Dự án: {{PROJECT_NAME}}. Tạo: {{DATE_UTC}}.
-Trạng thái: PROPOSED. Người đề xuất, reviewer và người quyết định: chưa phân công.
+Trạng thái: PROPOSED. Người quyết định và lý do lựa chọn: tự điền khi cần.
 
 ## Bối cảnh
 

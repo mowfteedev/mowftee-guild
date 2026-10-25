@@ -1,5 +1,6 @@
 # Sổ rủi ro: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Tạo: {{DATE_UTC}}. Owner: tech-lead.
 
 | ID | Tình huống / trigger | Tác động | Khả năng xảy ra và cơ sở | Mức ưu tiên | Giảm thiểu | Owner | Evidence | Xem lại |

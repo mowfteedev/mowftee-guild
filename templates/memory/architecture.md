@@ -1,5 +1,6 @@
 # Kiến trúc: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Cập nhật: {{DATE_UTC}}. Owner: software-architect. Trạng thái: DRAFT.
 
 ## Mục tiêu và ràng buộc

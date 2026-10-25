@@ -1,5 +1,6 @@
 # Yêu cầu: {{PROJECT_NAME}}
 
+> Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
 Tạo: {{DATE_UTC}}. Owner: product-analyst. Trạng thái: DRAFT.
 
 ## Người dùng và giá trị

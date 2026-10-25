@@ -1,4 +1,0 @@
-interface:
-  display_name: "Guild · Hiệu năng và đo tải"
-  short_description: "Hiệu năng và đo tải cho dự án mowftee-guild"
-  default_prompt: "Dùng $performance để xử lý phần hiệu năng và đo tải theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

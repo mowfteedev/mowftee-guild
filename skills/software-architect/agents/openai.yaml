@@ -1,4 +1,0 @@
-interface:
-  display_name: "Guild · Kiến trúc phần mềm"
-  short_description: "Kiến trúc phần mềm cho dự án mowftee-guild"
-  default_prompt: "Dùng $software-architect để xử lý phần kiến trúc phần mềm theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

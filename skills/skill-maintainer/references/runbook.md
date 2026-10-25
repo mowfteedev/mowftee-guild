@@ -16,7 +16,7 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Routing | Dùng trigger cụ thể và ranh giới với skill gần nhất; giữ description ngắn, phân biệt. | Ca dương/âm/chồng vai trò và expected primary owner. |
 | Instruction quality | Giữ core decision rules trong entrypoint, conditional detail trong reference. | Payload tự chứa, không bắt đọc toàn bộ thư viện mỗi task. |
 | Permissions/capability | Skill không cấp quyền mới; công cụ host phải thật và có fallback. | Ca READ-ONLY, missing tool và deferred plugin. |
-| Static checks | Kiểm metadata/schema/link/catalog, chưa kết luận agent behavior. | Command, exit code và danh sách validator đã chạy. |
+| Static checks | Kiểm frontmatter, tên thư mục và link, chưa kết luận agent behavior. | Command, exit code và danh sách validator đã chạy. |
 | Behavioral checks | Chạy request trên host/model với artifact tối thiểu và không lộ expected answer. | Transcript, actual actions, independent/self-review và limitations. |
 
 ## Hợp đồng đầu ra khi bàn giao
@@ -33,4 +33,4 @@ Chưa có quyền cài/kích hoạt plugin, không thể đánh giá hành vi tr
 
 ## Kiểm tra lại sau sửa
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Tối đa ba vòng cùng tiêu chí; hai vòng không tiến bộ thì báo điểm nghẽn cùng hướng xử lý, giữ nguyên AC bắt buộc.
+Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.

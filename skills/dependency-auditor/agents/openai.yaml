@@ -1,4 +1,0 @@
-interface:
-  display_name: "Guild · Kiểm toán phụ thuộc"
-  short_description: "Kiểm toán phụ thuộc cho dự án mowftee-guild"
-  default_prompt: "Dùng $dependency-auditor để xử lý phần kiểm toán phụ thuộc theo phạm vi dự án và bàn giao bằng chứng cùng giới hạn kiểm chứng."

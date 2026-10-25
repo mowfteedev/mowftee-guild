@@ -17,7 +17,7 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Khám phá lỗi | Chọn dữ liệu biên theo validation, quyền, concurrency và recovery thực tế. | Reproduction steps, expected/actual và hậu quả. |
 | Phân loại finding | Blocker cần tác động đáng kể và trigger; không nâng style thành lỗi nghiêm trọng. | Vị trí, dữ liệu gây lỗi và phạm vi ảnh hưởng. |
 | Kiểm lại snapshot | Thay code/config/data liên quan làm evidence cần đánh giá lại. | Commit, dirty state hoặc artifact digest trước/sau. |
-| Kết luận | PASS chỉ bao phủ phần đã thử; thiếu browser, reviewer hoặc dependency phải nêu rõ. | Kết luận có scope, independent/self-check và rủi ro còn lại. |
+| Kết luận | PASS chỉ bao phủ phần đã thử; thiếu browser hoặc dependency thì nêu rõ phần chưa thử. | Kết luận có scope, independent/self-check và rủi ro còn lại. |
 
 ## Hợp đồng đầu ra khi bàn giao
 
@@ -33,4 +33,18 @@ Thiếu môi trường cho AC bắt buộc; không xác minh được snapshot; 
 
 ## Kiểm tra lại sau sửa
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Tối đa ba vòng cùng tiêu chí; hai vòng không tiến bộ thì báo điểm nghẽn cùng hướng xử lý, giữ nguyên AC bắt buộc.
+Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+
+## Tổng hợp kết luận nghiệm thu
+
+Chọn AC bắt buộc theo phạm vi đã thống nhất trước khi kiểm tra. Phân biệt kết quả từng check với kết luận toàn bộ: có một check PASS không chứng minh toàn bộ tính năng đã đúng.
+
+| Trạng thái tiêu chí bắt buộc | Kết luận toàn bộ |
+| --- | --- |
+| Có FAIL | FAIL; ghi lỗi và owner sửa |
+| Không có FAIL nhưng còn điều kiện kiểm thử bị chặn | BLOCKED |
+| Không có FAIL/BLOCKED nhưng còn NOT_RUN | NOT_RUN |
+| Mọi điều kiện bắt buộc đã PASS, phạm vi không áp dụng được giải thích hợp lệ | PASS trong phạm vi đã chọn |
+| Chưa chốt AC/phạm vi | NOT_RUN, chưa đủ cơ sở nghiệm thu |
+
+NOT_APPLICABLE không được dùng để bỏ một yêu cầu đã chốt. Bản nháp có thể được push để review theo quyền đã có; đó không phải chứng nhận sẵn sàng phát hành.
