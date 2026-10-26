@@ -4,7 +4,8 @@
 
 | Tình huống | Cách xử lý | Giới hạn kết luận |
 | --- | --- | --- |
-| Test đỏ vì import hoặc thiếu dependency | Sửa điều kiện chạy trong phạm vi được phép rồi chạy lại ca lỗi. | Chưa tái hiện được lỗi mục tiêu. |
+| Test bị chặn bởi lỗi import/dependency không thuộc triệu chứng được báo | Khôi phục điều kiện chạy trong phạm vi được phép rồi thử lại ca lỗi. | Chưa tái hiện được lỗi mục tiêu. |
+| Lỗi được báo chính là import/khởi động thất bại | Chạy đúng entrypoint và môi trường được hỗ trợ, đối chiếu lỗi với báo cáo rồi theo dependency/config tới nguyên nhân. | Có thể là ca tái hiện hợp lệ; không loại chỉ vì loại lỗi là import. |
 | Ca hồi quy xanh ngay trên bản lỗi | Kiểm input, đường thực thi, fixture và assertion; thử xem ca có thực sự chạm điều kiện lỗi không. | Ca này chưa chứng minh được tác dụng của bản sửa. |
 | Ca ban đầu xanh sau sửa, luồng hợp lệ khác đỏ | Truy vùng ảnh hưởng và so baseline của luồng đó. | Chưa thể kết luận bản sửa đạt yêu cầu liên quan. |
 | Chỉ có log/trace từ môi trường xảy ra lỗi | Theo dữ kiện tới code tương ứng; kiểm điều kiện gây lỗi và giữ phần còn chưa tái hiện. | Không gọi phân tích log là đã chạy tái hiện local. |

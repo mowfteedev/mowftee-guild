@@ -2,17 +2,17 @@
 
 Xử lý nợ kỹ thuật hoặc rủi ro theo mức ưu tiên có bằng chứng, bảo toàn nghiệp vụ đã chốt.
 
-Đây là trình tự tham khảo cho dự án cá nhân. Một trợ lý có thể lần lượt làm các phần; bỏ bước không liên quan, không cần hội đồng duyệt hoặc tạo đủ hồ sơ.
+Chọn mục tiêu trước: lỗi đúng đắn, rủi ro bảo mật, chi phí vận hành, hiệu năng hay khả năng bảo trì. Dùng chuyên môn đúng mục tiêu thay vì tự mở rộng thành audit toàn repo.
 
 ## Gợi ý thực hiện
 
 1. Lập findings có trigger, tác động và nguồn; phân biệt lỗi với hardening hoặc sở thích.
-2. Thay đổi nhỏ theo từng mục tiêu; tách bugfix, dependency upgrade và tối ưu nếu semantics khác.
+2. Thay đổi nhỏ theo từng mục tiêu; với bugfix theo [bốn bước sửa lỗi](04-sua-loi.md). Tách dependency upgrade và tối ưu khi cần kiểm chứng hành vi hoặc phép đo khác.
 3. Kiểm lại finding, regression và so trước/sau trong điều kiện tương đương.
-4. Cập nhật risk/debt ledger, giữ lịch sử mục đã xử lý và kế hoạch phần còn lại.
+4. Tóm tắt mục đã xử lý, căn cứ và phần còn lại. Chỉ ghi sổ rủi ro/nợ kỹ thuật nếu dự án đang dùng hoặc cần giữ kết quả.
 
 ## Kiểm tra và kết thúc
 
-Đối chiếu kết quả với yêu cầu thật, tự phản biện các trường hợp dễ sai và chạy kiểm tra phù hợp với phần thay đổi. Ghi điều đã thử và phần chưa thử; không cần điền biểu mẫu chỉ để đủ quy trình.
+Bugfix cần kết quả ca lỗi trước/sau, tối ưu cần phép đo tương đương, còn refactor cần căn cứ giữ hành vi. Nêu đúng loại kết quả; diff ít dòng hơn chưa đủ để kết luận nhanh hơn hoặc an toàn hơn.
 
-Chỉ dùng [mẫu memory](../templates/memory/progress.md) nếu cần lưu ghi chú. Các [skill chuyên môn](../docs/skills-catalog.md) cung cấp chi tiết cho từng phần; không bắt buộc gọi cả bộ.
+[Chọn workflow khác](README.md) · [Danh mục skill](../docs/skills-catalog.md)

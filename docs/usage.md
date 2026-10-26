@@ -35,8 +35,8 @@ Trong Antigravity App dùng slash command, ví dụ `/frontend`, thay cho `$fron
 
 ## Tài liệu tùy chọn
 
-Runbook nằm cùng từng skill, chỉ đọc phần liên quan. Chọn workflow trong `workflows/` theo đầu việc; với sửa lỗi, giữ bốn bước trong [workflow sửa lỗi](../workflows/04-sua-loi.md) và báo phần chưa kiểm được. Không có cổng duyệt hoặc hồ sơ bắt buộc. Nếu muốn lưu thông tin dài hạn, copy mẫu từ `templates/memory/` vào dự án và điền tay; không cần tạo đủ bộ mỗi lần.
+Runbook nằm cùng từng skill, chỉ đọc phần liên quan. Chọn một [workflow](../workflows/README.md) theo đầu việc; với sửa lỗi, giữ bốn bước kiểm chứng và báo phần chưa kiểm được. Khi cần lưu kết quả, chọn một [mẫu ghi chú](../templates/memory/README.md) và điền phần hữu ích. Có thể trả kết quả ngay trong hội thoại cho tác vụ nhỏ.
 
 ## Skill và plugin
 
-Skill là các file hướng dẫn để host đọc và làm theo. Bộ này không cần process hay server riêng. Plugin là cách đóng gói/phân phối thêm; MCP chỉ cần khi muốn kết nối công cụ hoặc dữ liệu qua server. Phần đó sẽ làm riêng khi được yêu cầu.
+Skill là các file hướng dẫn để host đọc và làm theo. Plugin có thể đóng gói các skill đó thành một gói cài; MCP bổ sung công cụ hoặc dữ liệu qua server khi cần. Xem [giới thiệu plugin](plugins.md) để hiểu cấu trúc và phạm vi phù hợp với bộ này.

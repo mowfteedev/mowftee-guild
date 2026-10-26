@@ -2,17 +2,17 @@
 
 Thêm hành vi mới theo AC mà vẫn giữ các contract/hành vi cũ thuộc phạm vi hỗ trợ.
 
-Đây là trình tự tham khảo cho dự án cá nhân. Một trợ lý có thể lần lượt làm các phần; bỏ bước không liên quan, không cần hội đồng duyệt hoặc tạo đủ hồ sơ.
+Đọc yêu cầu mới cùng hành vi đang được hỗ trợ trước khi đổi code. Xác định caller, contract, dữ liệu và cách kiểm vùng ảnh hưởng.
 
 ## Gợi ý thực hiện
 
 1. Ghi AC và vùng ảnh hưởng; phân loại lỗi baseline tồn tại trước thay đổi.
 2. Thực hiện thay đổi; migration-specialist quản lý expand/backfill/cutover khi cần.
-3. Chạy checks vùng ảnh hưởng, kiểm tương thích consumer và hành vi mới; điều tra retry/flaky thật.
-4. Cập nhật docs/API/changelog/memory được phép; push/merge/deploy theo quyền riêng.
+3. Chạy checks vùng ảnh hưởng, kiểm tương thích consumer và hành vi mới. Nếu phát hiện lỗi, dùng [workflow sửa lỗi](04-sua-loi.md); tách lỗi baseline với lỗi mới bằng dữ kiện.
+4. Cập nhật hướng dẫn hoặc contract thực sự đổi; chỉ lưu ghi chú khi hữu ích. Push/merge/deploy theo phạm vi đã được cấp.
 
 ## Kiểm tra và kết thúc
 
-Đối chiếu kết quả với yêu cầu thật, tự phản biện các trường hợp dễ sai và chạy kiểm tra phù hợp với phần thay đổi. Ghi điều đã thử và phần chưa thử; không cần điền biểu mẫu chỉ để đủ quy trình.
+Đối chiếu tiêu chí mới và các hành vi cũ chịu tác động, ghi kết quả theo phiên bản đã thử. Bước chưa nối hoặc chưa chạy cần được nêu trong bàn giao; không đổi kỳ vọng để hợp thức regression.
 
-Chỉ dùng [mẫu memory](../templates/memory/progress.md) nếu cần lưu ghi chú. Các [skill chuyên môn](../docs/skills-catalog.md) cung cấp chi tiết cho từng phần; không bắt buộc gọi cả bộ.
+[Chọn workflow khác](README.md) · [Danh mục skill](../docs/skills-catalog.md)

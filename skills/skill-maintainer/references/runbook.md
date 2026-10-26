@@ -27,7 +27,7 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 
 ## Điều kiện dừng phần phụ thuộc
 
-Chưa có quyền cài/kích hoạt plugin, không thể đánh giá hành vi trong môi trường hiện tại hoặc nguồn tái sử dụng chưa rõ license. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
+Thiếu dữ kiện làm thay đổi phạm vi skill hoặc nguồn tái sử dụng chưa rõ license thì giữ phần đó để làm rõ. Nếu chưa có môi trường thử hành vi, vẫn chỉnh và kiểm cấu trúc phần độc lập; ghi chưa chạy đánh giá hành vi. Không coi thiếu bước đánh giá tùy chọn là lý do dừng toàn bộ việc chỉnh Markdown.
 
 ## Ví dụ đánh giá chiều sâu mà không tăng thủ tục
 

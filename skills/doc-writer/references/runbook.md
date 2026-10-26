@@ -16,7 +16,7 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Quickstart | Ghi prerequisite, command thật, path và đầu ra; chạy trong môi trường tạm. | Transcript command/exit code đúng phiên bản. |
 | Reference | Đối chiếu CLI help/schema, flags, defaults và errors. | Bảng option/API khớp implementation. |
 | Migration | Ghi breaking change, dữ liệu cần giữ, backup và cách quay lui. | Before/after usage và hướng dẫn bảo toàn tùy chỉnh. |
-| Examples/evidence | Ví dụ ghi rõ là minh họa; template mặc định NOT_RUN; secret chỉ placeholder. | Mẫu không có số đo giả hoặc credential thật. |
+| Examples/evidence | Ví dụ ghi rõ là minh họa; mẫu kết quả kiểm tra bắt đầu NOT_RUN, mẫu quyết định có thể là DRAFT/PROPOSED; secret chỉ placeholder. | Mẫu không có số đo giả hoặc credential thật. |
 | Handoff | Kết nối artifact, version, limitations, owner và troubleshooting. | Link tồn tại, phạm vi đã test và câu hỏi còn mở. |
 
 ## Đầu ra cần giữ khi liên quan

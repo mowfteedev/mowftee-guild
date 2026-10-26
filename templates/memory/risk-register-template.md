@@ -1,14 +1,15 @@
 # Sổ rủi ro: {{PROJECT_NAME}}
 
 > Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
-Tạo: {{DATE_UTC}}. Owner: tech-lead.
 
-| ID | Tình huống / trigger | Tác động | Khả năng xảy ra và cơ sở | Mức ưu tiên | Giảm thiểu | Owner | Evidence | Xem lại |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+Tạo: {{DATE_UTC}}.
 
-## Exception được chấp nhận
+| Tình huống / trigger | Tác động và căn cứ | Mức ưu tiên | Giảm thiểu / bước tiếp | Điều kiện xem lại |
+| --- | --- | --- | --- | --- |
 
-Ghi người có thẩm quyền, lý do, giới hạn phạm vi, thời hạn và biện pháp giảm thiểu. Không dùng exception để hợp thức hóa việc thiếu quyền hoặc bỏ yêu cầu bắt buộc của người dùng.
+## Rủi ro còn giữ lại
+
+Ghi lý do, phạm vi, biện pháp giảm thiểu và khi nào xem lại. Chỉ ghi người chấp nhận nếu có quyết định thật; không dùng ghi chú này để tự bỏ yêu cầu hoặc mở rộng quyền.
 
 ## Nợ kỹ thuật
 

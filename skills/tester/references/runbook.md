@@ -35,7 +35,7 @@ Thiếu môi trường cho AC bắt buộc; không xác minh được snapshot; 
 | --- | --- | --- |
 | “Test đã pass” | Command/thao tác, phiên bản, môi trường và output; test có chạm triệu chứng không? | Chưa đủ căn cứ nếu chỉ có lời tự báo. |
 | Cùng ca fail trước, pass sau | Lý do fail ban đầu và kỳ vọng giữ nguyên; điều kiện so sánh có khớp không? | Xác nhận ca đó được sửa; kiểm tiếp vùng ảnh hưởng trước kết luận rộng hơn. |
-| Test đỏ vì thiếu dependency rồi xanh sau cài dependency | Có quan sát được hành vi lỗi mục tiêu không? | Chưa chứng minh bản vá logic sửa lỗi mục tiêu. |
+| Test đỏ vì thiếu dependency rồi xanh sau cài dependency | Thiếu dependency có phải triệu chứng đang điều tra và thuộc môi trường hỗ trợ không, hay chỉ chặn kiểm một lỗi khác? | Chỉ chứng minh sửa lỗi dependency tương ứng; chưa đủ để kết luận một lỗi khác đã được sửa. |
 | Ca giả lập pass, chưa tái hiện lỗi gốc | Giả lập bao phủ cơ chế nào, thiếu điều kiện nào so với báo cáo thật? | Chỉ kết luận trong phạm vi giả lập; lỗi gốc chưa được xác minh. |
 | CI từ lần trước | Có đúng commit/artifact, cấu hình, dữ liệu và phạm vi check đang đánh giá không? | Dùng được khi còn khớp; kiểm lại phần đã đổi liên quan. |
 

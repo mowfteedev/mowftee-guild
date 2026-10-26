@@ -2,6 +2,21 @@
 
 Các skill là những góc nhìn chuyên môn để một người dùng với cùng trợ lý. Không cần gọi đủ bộ hoặc có thêm người quản lý.
 
+## Chọn điểm bắt đầu
+
+| Mục tiêu | Skill chính | Mở rộng khi cần |
+| --- | --- | --- |
+| Chưa rõ nên xây gì hoặc làm theo thứ tự nào | `product-analyst`, `tech-lead` | `software-architect`, `designer` |
+| Thiết kế contract hoặc mô hình dữ liệu | `api-designer`, `database` | `migration-specialist` khi chuyển dữ liệu đang có |
+| Viết phần triển khai | `frontend` hoặc `backend` | Chuyên môn liên quan tới phần đang sửa |
+| Có triệu chứng sai, crash hoặc test thất bại | `systematic-debugging` | Skill triển khai của tầng gây lỗi |
+| Viết test, nghiệm thu hoặc đọc diff | `test-automator`, `tester` hoặc `code-reviewer` | Chọn theo đầu ra cần nhận |
+| Cải thiện bảo mật, hiệu năng hoặc cấu trúc | `security`, `dependency-auditor`, `performance`, `refactoring-specialist` | Chỉ chọn phạm vi thật sự cần kiểm |
+| Triển khai, theo dõi, xử lý sự cố hoặc phát hành | `devops`, `sre`, `incident-responder`, `release-manager` | Phân biệt điều tra với hành động trên dịch vụ |
+| Viết tài liệu hoặc chỉnh skill | `doc-writer`, `skill-maintainer` | Kiểm nội dung theo hành vi thực tế |
+
+## Danh sách đầy đủ
+
 | Tên skill | Dùng để làm gì, vai trò trong dự án |
 | --- | --- |
 | [accessibility](../skills/accessibility/SKILL.md) | **Khả năng tiếp cận** — Đánh giá và sửa accessibility cho giao diện web: keyboard, focus, semantic, thông báo và tương phản; không thay designer quyết định thẩm mỹ hoặc tuyên bố chứng nhận từ scanner. |

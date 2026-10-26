@@ -1,5 +1,16 @@
 # Cài, cập nhật và gỡ
 
+## Lấy đúng bản repo
+
+Bản hiện tại ở nhánh `feat/guild-v2-specialized-skills`; `main` vẫn dùng script cũ. Với bản clone mới:
+
+```bash
+git clone --branch feat/guild-v2-specialized-skills --single-branch https://github.com/mowfteedev/mowftee-guild.git
+cd mowftee-guild
+```
+
+Nếu đã có bản clone, kiểm nhánh bằng `git branch --show-current` và giữ các thay đổi riêng trước khi chuyển sang nhánh review. Không cần clone lại nếu đang ở đúng nhánh.
+
 ## Cách dùng
 
 ```bash
@@ -31,7 +42,7 @@ Nếu sau này một skill có `LICENSE.txt` riêng theo nguồn của nó, scri
 
 ## Cập nhật
 
-Chỉnh nội dung ở bản repo rồi chạy lại `install`. Bản đã chép sẽ được thay thế, gồm cả tài liệu đi kèm. Nếu cần tùy chỉnh, sửa ở repo để lần cài sau giữ đúng nội dung anh muốn.
+Chỉnh nội dung ở bản repo hoặc cập nhật đúng nhánh bằng `git pull --ff-only`, rồi chạy lại `install`. Nếu Git không thể cập nhật vì nhánh đã phân kỳ hoặc có thay đổi cục bộ, giữ các chỉnh sửa đó và xử lý trước; không tự reset để cài. Bản đã chép sẽ được thay thế, gồm cả tài liệu đi kèm. Nếu cần tùy chỉnh, sửa ở repo để lần cài sau giữ đúng nội dung anh muốn.
 
 Mỗi thư mục do script chép có một tệp trống `.mowftee-guild` để nhận biết khi gỡ. Đây chỉ là dấu đánh dấu cục bộ; không có registry, hash hay trạng thái cần quản lý. `uninstall` gỡ những thư mục có dấu này, kể cả skill đã bỏ khỏi repo sau một lần cập nhật. Các thư mục khác được giữ nguyên.
 

@@ -14,6 +14,7 @@
 
 - Kiểm hành vi người dùng cần, không chỉ việc code có tồn tại.
 - Thử lỗi và dữ liệu biên phù hợp với phần thay đổi.
+- Với bản sửa lỗi, đối chiếu triệu chứng, căn cứ nguyên nhân, cùng ca trước/sau và hồi quy liên quan; ghi rõ phần chưa làm được.
 - Không điền PASS, phần trăm hoặc số đo nếu chưa thử.
 - Nếu môi trường thiếu, ghi phần chưa chạy; không cần tìm thêm reviewer chỉ để hoàn tất mẫu.
 

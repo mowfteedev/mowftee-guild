@@ -1,18 +1,18 @@
 # Ứng phó sự cố và postmortem
 
-Giảm tác động trong quyền đã có, giữ bằng chứng và biến sự cố thành hành động cải thiện rõ owner.
+Giảm tác động trong quyền đã có, giữ bằng chứng và xác định việc cần làm để tránh tái diễn.
 
-Đây là trình tự tham khảo cho dự án cá nhân. Một trợ lý có thể lần lượt làm các phần; bỏ bước không liên quan, không cần hội đồng duyệt hoặc tạo đủ hồ sơ.
+Xác định hệ thống, phạm vi ảnh hưởng và quyền thao tác trước. Ưu tiên khôi phục hành trình người dùng; mitigation có tác dụng chưa đồng nghĩa đã tìm được nguyên nhân.
 
 ## Gợi ý thực hiện
 
 1. Đo ảnh hưởng người dùng, thu dữ liệu an toàn và ghi giả thuyết có thể kiểm chứng.
 2. Chọn hành động nhỏ có thể đảo ngược, ghi trước/sau và điểm dừng; thay một biến khi có thể.
 3. Kiểm user journey và độ ổn định trong cửa sổ phù hợp, giữ residual risk.
-4. Ghi yếu tố góp phần, điều hiệu quả, việc cần sửa và kiểm chứng tái diễn.
+4. Ghi yếu tố góp phần, điều hiệu quả và việc cần sửa. Với bản sửa lâu dài, dùng [bốn bước debug](04-sua-loi.md) theo dữ kiện sự cố; nếu chưa tái hiện local thì giữ giới hạn đó.
 
 ## Kiểm tra và kết thúc
 
-Đối chiếu kết quả với yêu cầu thật, tự phản biện các trường hợp dễ sai và chạy kiểm tra phù hợp với phần thay đổi. Ghi điều đã thử và phần chưa thử; không cần điền biểu mẫu chỉ để đủ quy trình.
+Kiểm lại ảnh hưởng và luồng người dùng sau hành động, giữ timeline có nguồn. Bàn giao phần đã phục hồi, giả thuyết chưa xác minh và bước tiếp; không đánh dấu đã fix nguyên nhân chỉ vì restart làm hết triệu chứng.
 
-Chỉ dùng [mẫu memory](../templates/memory/progress.md) nếu cần lưu ghi chú. Các [skill chuyên môn](../docs/skills-catalog.md) cung cấp chi tiết cho từng phần; không bắt buộc gọi cả bộ.
+[Chọn workflow khác](README.md) · [Skill incident-responder](../skills/incident-responder/SKILL.md)

@@ -1,6 +1,7 @@
 # Bằng chứng kiểm chứng: {{PROJECT_NAME}}
 
 > Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
+
 Tạo: {{DATE_UTC}}. Trạng thái tổng hợp: NOT_RUN.
 
 ## Phạm vi
@@ -12,9 +13,13 @@ Tạo: {{DATE_UTC}}. Trạng thái tổng hợp: NOT_RUN.
 
 ## Kiểm tra thực tế
 
-| ID | AC | Command / thao tác | Thời điểm | Exit code | Kết quả thực tế | Trạng thái | Artifact |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Chưa chạy | Chưa chọn | Chưa thực hiện | Chưa có | Chưa có | Chưa có | NOT_RUN | Chưa có |
+| Ca / mốc kiểm tra | Snapshot / điều kiện | Command / thao tác | Output quan trọng / exit code | Trạng thái | Link / ghi chú |
+| --- | --- | --- | --- | --- | --- |
+| Chưa chọn | Chưa ghi | Chưa thực hiện | Chưa có | NOT_RUN | Chưa có |
+
+Với sửa lỗi, ghi riêng bản lỗi, bản sửa và hồi quy liên quan. Ca thất bại phải đúng triệu chứng; lỗi môi trường chặn một ca khác chưa chứng minh được lỗi mục tiêu. Nếu không có baseline hoặc chỉ có giả lập, ghi rõ giới hạn.
+
+Kết quả CI cần link tới đúng commit/artifact và phạm vi check. Giữ bằng chứng còn khớp; kiểm lại phần bị ảnh hưởng khi code, cấu hình, dữ liệu hoặc môi trường liên quan đổi. Không bắt chạy lại chỉ vì sang lượt chat mới.
 
 ## Giới hạn
 
@@ -32,4 +37,4 @@ Chỉ thu evidence cần thiết cho phạm vi; che secret, token và dữ liệ
 
 ## Kết luận
 
-NOT_RUN. Điền kết luận sau khi thực hiện; ghi rủi ro còn lại và điều kiện kiểm lại khi snapshot thay đổi.
+NOT_RUN. Điền kết luận sau khi thực hiện; ghi phần được xác minh, phần chưa chạy và điều kiện kiểm lại. Không gán một ca PASS thành kết luận toàn bộ tính năng đạt.

@@ -2,18 +2,18 @@
 
 Tạo MVP có phạm vi kiểm chứng được, kiến trúc phù hợp và bàn giao có thể chạy theo tài liệu.
 
-Đây là trình tự tham khảo cho dự án cá nhân. Một trợ lý có thể lần lượt làm các phần; bỏ bước không liên quan, không cần hội đồng duyệt hoặc tạo đủ hồ sơ.
+Đầu vào cần rõ: người sử dụng, vấn đề, phần tối thiểu phải làm được và ràng buộc hiện có. Dùng `product-analyst` cho yêu cầu, `software-architect` cho đánh đổi và chuyên môn triển khai tương ứng.
 
 ## Gợi ý thực hiện
 
 1. Viết AC, happy/error path, ngoài scope và câu hỏi quan trọng.
-2. Chọn phương án phù hợp, thiết kế contract/schema/spec, ghi ADR có đánh đổi; migration có owner riêng.
+2. Chọn phương án phù hợp, thiết kế contract/schema/spec; chỉ ghi ADR khi có quyết định đáng giữ. Nếu có dữ liệu đang dùng, xem riêng việc chuyển đổi và phục hồi.
 3. Chia vùng file, triển khai theo cấu trúc hiện hữu; test-automator bổ sung checks có giá trị.
-4. Đối chiếu AC, khám phá lỗi biên, quyền và phục hồi; chọn mức fuzz/load theo môi trường được phép.
+4. Đối chiếu tiêu chí, thử lỗi biên, quyền và phục hồi theo tác động. Có lỗi cụ thể thì theo [workflow sửa lỗi](04-sua-loi.md), không sửa bằng phỏng đoán.
 5. Kiểm cách build/chạy, ghi prerequisites, rollout/rollback và giới hạn; chỉ thực hiện action đã được phép.
 
 ## Kiểm tra và kết thúc
 
-Đối chiếu kết quả với yêu cầu thật, tự phản biện các trường hợp dễ sai và chạy kiểm tra phù hợp với phần thay đổi. Ghi điều đã thử và phần chưa thử; không cần điền biểu mẫu chỉ để đủ quy trình.
+Một người khác phải hiểu cách chạy, luồng cốt lõi nào đã được thử và phần nào còn thiếu. Bản chưa nối dịch vụ thật cần nói rõ mock; không gọi giao diện mẫu là một MVP đã chạy đầu cuối.
 
-Chỉ dùng [mẫu memory](../templates/memory/progress.md) nếu cần lưu ghi chú. Các [skill chuyên môn](../docs/skills-catalog.md) cung cấp chi tiết cho từng phần; không bắt buộc gọi cả bộ.
+[Chọn workflow khác](README.md) · [Danh mục skill](../docs/skills-catalog.md)

@@ -2,7 +2,7 @@
 
 Bản đầu của v2 đã thêm quá nhiều quản lý quanh một bộ file Markdown. Theo nhu cầu dùng một mình, repo đã được rút gọn:
 
-- Giữ 23 skill chuyên môn và runbook đi kèm.
+- Bản hiện tại có 24 skill và runbook đi kèm, gồm `systematic-debugging` bổ sung sau lần rút gọn.
 - Chỉ dùng `setup.sh install [tool]` và `setup.sh uninstall [tool]`.
 - Bỏ CLI Python, catalog/profile, manifest/hash, transaction, bộ đăng ký đánh giá và metadata UI tùy chọn.
 - Không bắt buộc reviewer khác, quality gate, bộ hồ sơ dự án hoặc số vòng sửa cố định.

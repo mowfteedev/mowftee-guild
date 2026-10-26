@@ -1,11 +1,14 @@
 # Bàn giao: {{PROJECT_NAME}}
 
 > Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
+
 Tạo: {{DATE_UTC}}. Trạng thái: DRAFT.
 
-- Từ / tới / owner: chưa phân công.
-- Task, AC và snapshot: chưa ghi nhận.
+- Việc cần tiếp tục và tiêu chí: chưa ghi nhận.
+- Snapshot và môi trường: chưa ghi nhận.
 - Phạm vi được phép và giới hạn: chưa ghi nhận.
+
+Thêm người nhận nếu có; không cần phân vai hoặc tạo người duyệt riêng.
 
 ## Đầu ra
 
@@ -19,7 +22,7 @@ File đã thay đổi hoặc artifact đã tạo; liên kết contract, ADR ho�
 
 ## Việc còn lại
 
-Owner, dependency, câu hỏi chặn và điều kiện mở bước sau. Mâu thuẫn kết luận phải giữ cả hai nguồn và nêu cách tái hiện; không chọn tùy ý.
+Phần chưa hoàn tất, câu hỏi chặn và điều kiện làm tiếp. Mâu thuẫn kết luận phải giữ cả hai nguồn và nêu cách đối chiếu; không chọn tùy ý.
 
 ## Quyền bước tiếp theo
 

@@ -33,7 +33,7 @@ Không đủ contract hoặc caller để khẳng định lỗi; báo câu hỏi
 
 1. Đối chiếu báo cáo lỗi với trigger và đường thực thi. Một diff làm mất thông báo lỗi chưa chứng minh nguyên nhân đã được xử lý.
 2. Kiểm thay đổi có tác dụng ở đúng tầng gây sai; tìm caller dùng chung, dữ liệu hoặc side effect có thể bị tác động. Nếu bản vá chỉ nới assertion, mock đối tượng đang kiểm, nuốt lỗi hoặc thêm retry, yêu cầu cơ sở cho hành vi đó.
-3. Đọc ca tái hiện và kết quả baseline: test phải chạm lỗi mục tiêu. Lỗi import/runner không phải bằng chứng regression; test vốn xanh trên bản lỗi không chứng minh tác dụng của bản sửa.
+3. Đọc ca tái hiện và kết quả baseline: test phải chạm lỗi mục tiêu. Lỗi import/runner chỉ là bằng chứng cho bản sửa khi nó thuộc triệu chứng đang điều tra; nếu nó chặn việc kiểm một lỗi khác thì chưa đủ. Test vốn xanh trên bản lỗi không chứng minh tác dụng của bản sửa.
 4. Đối chiếu cùng ca sau sửa và các kiểm tra vùng ảnh hưởng. Kết quả cần command/thao tác, snapshot, môi trường và output quan trọng; CI cần đúng commit/artifact. Đánh giá lại khi phần liên quan đổi, không đòi test lại chỉ vì sang lượt chat.
 
 Nếu chỉ đọc code, vẫn có thể nêu lỗi có căn cứ từ contract/call path, nhưng phải ghi chưa chạy tái hiện. Thiếu bằng chứng chạy không tự biến một nghi vấn thành blocker; nêu rõ điều còn thiếu và giới hạn kết luận. Không bịa một lần fail trước hoặc pass sau để làm bản review trông đầy đủ.

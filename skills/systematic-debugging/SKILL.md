@@ -18,7 +18,7 @@ license: MIT
 
 Xác định input, trigger, expected/actual, phiên bản và môi trường. Chọn test, script hoặc thao tác nhỏ nhất còn thể hiện lỗi; chạy trên bản lỗi trước khi đổi logic và giữ output quan trọng.
 
-Một test đỏ phải thất bại vì hành vi cần sửa. Lỗi runner, import, fixture hoặc môi trường chưa đủ điều kiện không được tính là tái hiện lỗi đó. Giữ nguyên thay đổi hiện có của người dùng.
+Một test đỏ phải thất bại vì đúng triệu chứng cần sửa. Lỗi runner, import, fixture hoặc môi trường chỉ được tính nếu đó chính là lỗi đang điều tra; nếu chúng chặn ca kiểm tra một lỗi khác thì chưa tái hiện được lỗi mục tiêu. Giữ nguyên thay đổi hiện có của người dùng.
 
 Nếu không tái hiện được, ghi các cách đã thử và dữ kiện còn thiếu. Có thể tiếp tục điều tra log/trace hoặc đường thực thi, nhưng phải giữ giới hạn này trong kết luận.
 

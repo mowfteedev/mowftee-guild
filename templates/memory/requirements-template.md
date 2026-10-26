@@ -1,7 +1,8 @@
 # Yêu cầu: {{PROJECT_NAME}}
 
 > Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
-Tạo: {{DATE_UTC}}. Owner: product-analyst. Trạng thái: DRAFT.
+
+Tạo: {{DATE_UTC}}. Trạng thái: DRAFT.
 
 ## Người dùng và giá trị
 
@@ -15,9 +16,11 @@ Vấn đề, hành vi hiện tại và kết quả mong đợi. Không dùng mô
 
 ## Acceptance criteria
 
-| ID | Tiền đề | Hành động | Kết quả quan sát được | Mức bắt buộc | Owner xác nhận |
-| --- | --- | --- | --- | --- | --- |
-| AC-001 | Chưa xác định | Chưa xác định | Chưa xác định | Chưa chốt | Chưa phân công |
+| Tiêu chí | Tiền đề | Hành động | Kết quả quan sát được | Mức bắt buộc |
+| --- | --- | --- | --- | --- |
+| Chưa chọn | Chưa xác định | Chưa xác định | Chưa xác định | Chưa chốt |
+
+Dùng mã AC khi cần theo dõi nhiều tiêu chí; tác vụ nhỏ có thể ghi vài dòng với đầu vào, hành động và kết quả mong đợi.
 
 ## Trường hợp biên và quyền
 

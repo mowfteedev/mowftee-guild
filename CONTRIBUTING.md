@@ -8,6 +8,10 @@ Chỉnh trực tiếp Markdown trong `skills/<name>/SKILL.md`; giữ tên trong 
 - Khi thêm skill, cập nhật [danh mục](docs/skills-catalog.md). Script tự đọc các thư mục, không có catalog/profile phải đồng bộ.
 - Giữ nguồn tham khảo và license nếu dùng nội dung từ bên ngoài.
 - Nội dung gốc dùng bản `LICENSE` ở gốc; không nhân bản vào từng skill trong repo. Script sẽ chép kèm khi cài. Nội dung bên thứ ba có thông báo riêng thì vẫn giữ theo nguồn đó.
+- Workflow và mẫu ghi chú cần có mục đích cụ thể, phần kết thúc phù hợp với đầu việc; cập nhật mục lục trong thư mục khi thêm hoặc đổi tên file.
+- Khi sửa quy tắc debug, rà cả triệu chứng mục tiêu và lỗi khác có thể chặn ca kiểm tra. Đừng loại một ca hợp lệ chỉ theo tên lỗi như import, timeout hoặc kết nối.
+
+Sau khi chỉnh Markdown, đối chiếu tên trong frontmatter, đường dẫn tài liệu đi kèm và các ví dụ sử dụng với trạng thái repo. Giữ mỗi skill tự chứa phần hướng dẫn cần thiết sau khi chép. Đọc lại nội dung hoặc kiểm định dạng không được báo thành đã thử hành vi của trợ lý.
 
 Kiểm tra khi sửa script cài/gỡ:
 

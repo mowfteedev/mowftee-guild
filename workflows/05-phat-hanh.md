@@ -2,17 +2,17 @@
 
 Đảm bảo đúng artifact, đúng quyền và có tín hiệu dừng hoặc phục hồi khi phát hành.
 
-Đây là trình tự tham khảo cho dự án cá nhân. Một trợ lý có thể lần lượt làm các phần; bỏ bước không liên quan, không cần hội đồng duyệt hoặc tạo đủ hồ sơ.
+Xác định hành động cần làm: push nhánh để xem, tạo bản phát hành hay triển khai dịch vụ. Chọn mức kiểm tương ứng; yêu cầu push không tự bao gồm merge, tag hoặc deploy.
 
 ## Gợi ý thực hiện
 
 1. Đối chiếu AC, artifact, thay đổi kể từ evidence và giới hạn được chấp nhận.
-2. Kiểm prerequisites, ordering, feature flags, migration và khả năng rollback hoặc roll-forward.
+2. Nếu triển khai, kiểm prerequisites, thứ tự app/schema, migration và cách phục hồi. Nếu chỉ push tài liệu, kiểm nội dung, liên kết và các check liên quan của repo.
 3. Thực hiện đúng phần được cho phép, ghi URL/SHA/id; không force-push hoặc mở rộng môi trường.
-4. Kiểm remote SHA hoặc tín hiệu runtime tương ứng, cập nhật docs/notes và owner.
+4. Kiểm remote SHA hoặc tín hiệu runtime tương ứng, ghi kết quả thật và việc còn chờ.
 
 ## Kiểm tra và kết thúc
 
-Đối chiếu kết quả với yêu cầu thật, tự phản biện các trường hợp dễ sai và chạy kiểm tra phù hợp với phần thay đổi. Ghi điều đã thử và phần chưa thử; không cần điền biểu mẫu chỉ để đủ quy trình.
+Link nhánh/commit, check CI hoặc deployment phải trỏ tới đúng phiên bản đang bàn giao. CI còn chạy thì ghi đang chạy; service khởi động chưa chứng minh luồng người dùng đã phục hồi. Có lỗi cụ thể thì quay lại [điều tra nguyên nhân](04-sua-loi.md).
 
-Chỉ dùng [mẫu memory](../templates/memory/progress.md) nếu cần lưu ghi chú. Các [skill chuyên môn](../docs/skills-catalog.md) cung cấp chi tiết cho từng phần; không bắt buộc gọi cả bộ.
+[Chọn workflow khác](README.md) · [Skill release-manager](../skills/release-manager/SKILL.md)

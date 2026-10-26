@@ -1,6 +1,7 @@
 # ADR-{{ADR_ID}}: {{ADR_TITLE}}
 
 > Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
+
 Dự án: {{PROJECT_NAME}}. Tạo: {{DATE_UTC}}.
 Trạng thái: PROPOSED. Người quyết định và lý do lựa chọn: tự điền khi cần.
 
@@ -22,6 +23,6 @@ Chưa chốt. Ghi ranh giới module, ownership dữ liệu, contract và phần
 
 Trade-offs được chấp nhận, migration ordering, compatibility, rollback hoặc roll-forward. Ghi điều kiện xem lại quyết định.
 
-## Phê duyệt
+## Trạng thái quyết định
 
-Chưa có. PROPOSED không được hiểu là ACCEPTED. Khi thay thế ADR, giữ lịch sử và liên kết quyết định mới.
+Chưa chốt. Khi quyết định được đưa ra, ghi lựa chọn và lý do; đề xuất không tự trở thành quyết định đã áp dụng. Khi thay thế ADR, giữ lịch sử và liên kết quyết định mới.

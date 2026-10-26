@@ -1,5 +1,13 @@
 # Changelog
 
+## Thống nhất repo và hướng dẫn sử dụng — 2026-10-26
+
+- Sửa quickstart để clone đúng nhánh review đang chứa 24 skill, tránh chạy script cũ từ `main`.
+- Đồng bộ cách ghi bằng chứng trong các skill; nối quy trình debug vào frontend/backend và làm rõ import/runner chỉ là lỗi chặn nếu không thuộc triệu chứng đang điều tra.
+- Thêm bảng chọn skill theo mục tiêu, mục lục workflow và mẫu ghi chú; thay đoạn kết lặp bằng tiêu chí theo từng đầu việc.
+- Rút các mẫu về thông tin dùng cá nhân, bỏ cột phân vai/reviewer và vòng sửa không cần thiết; đổi `gate-checklist-template.md` thành `self-check-template.md`.
+- Viết tài liệu giới thiệu skill, plugin và MCP dựa trên OpenAI Docs; chưa thêm manifest hoặc cài plugin.
+
 ## Sửa lỗi có bằng chứng — 2026-10-26
 
 - Thêm skill `systematic-debugging`, đưa tổng số lên 24; chỉ dẫn bốn bước: tái hiện, xác minh nguyên nhân, sửa tối thiểu và kiểm cùng ca, hồi quy liên quan.

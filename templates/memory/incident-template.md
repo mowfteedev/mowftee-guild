@@ -1,7 +1,8 @@
 # Hồ sơ sự cố: {{PROJECT_NAME}}
 
 > Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
-Tạo: {{DATE_UTC}}. Owner: incident-responder. Trạng thái: CHƯA ĐÁNH GIÁ.
+
+Tạo: {{DATE_UTC}}. Trạng thái: CHƯA ĐÁNH GIÁ.
 
 ## Tác động và quyền xử lý
 
@@ -22,4 +23,4 @@ Chưa kết luận. Phân biệt observation, hypothesis, mitigation và root ca
 
 ## Phục hồi và postmortem
 
-Bằng chứng người dùng đã phục hồi, giới hạn còn lại, điều gì hiệu quả và follow-up có owner. Không đánh dấu hồi phục chỉ vì process đã khởi động.
+Bằng chứng người dùng đã phục hồi, giới hạn còn lại, điều gì hiệu quả và việc cần làm tiếp. Ghi người phụ trách thực nếu có. Không đánh dấu hồi phục chỉ vì process đã khởi động và không suy nguyên nhân đã được sửa từ việc mitigation có tác dụng.

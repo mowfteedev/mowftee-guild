@@ -6,7 +6,7 @@
 
 - Ghi triệu chứng, đầu vào, hành vi mong đợi và hành vi thực tế; xác định phiên bản cùng môi trường xảy ra lỗi.
 - Chọn ca nhỏ nhất còn thể hiện đúng lỗi: test có sẵn, test hồi quy mới, script hoặc thao tác thủ công. Chạy trên bản lỗi trước khi đổi logic và giữ kết quả quan trọng.
-- Xác nhận ca thất bại vì triệu chứng cần sửa. Thiếu dependency, lỗi import, sai fixture hoặc không kết nối được môi trường chưa chứng minh đã tái hiện lỗi nghiệp vụ.
+- Xác nhận ca thất bại vì triệu chứng cần sửa. Thiếu dependency, lỗi import, fixture hoặc kết nối chỉ được tính nếu đó chính là triệu chứng đang điều tra; nếu chúng chặn việc kiểm một lỗi khác thì chưa tái hiện được lỗi mục tiêu.
 - Nếu chưa tái hiện được, ghi điều đã thử và điều kiện còn thiếu; tiếp tục thu bằng chứng được phép. Không ghi đè thay đổi của người dùng để lấy baseline, không tự thử lên production.
 
 ## 2. Xác minh nguyên nhân

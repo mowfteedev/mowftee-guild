@@ -2,10 +2,12 @@
 
 Bộ **24 skill tiếng Việt** để dùng với Codex hoặc Google Antigravity. Mỗi skill là hướng dẫn Markdown theo một chuyên môn: lập kế hoạch, giao diện, backend, dữ liệu, sửa lỗi, kiểm thử, vận hành… Một trợ lý có thể lần lượt dùng các góc nhìn đó; không cần dựng đội agent hay hệ thống quản lý riêng.
 
-## Cài và gỡ
+## Cài, cập nhật và gỡ
+
+Bản 24 skill hiện ở nhánh `feat/guild-v2-specialized-skills`; `main` vẫn là bản cũ. Clone đúng nhánh để dùng các lệnh dưới đây:
 
 ```bash
-git clone https://github.com/mowfteedev/mowftee-guild.git
+git clone --branch feat/guild-v2-specialized-skills --single-branch https://github.com/mowfteedev/mowftee-guild.git
 cd mowftee-guild
 
 # Codex
@@ -19,7 +21,7 @@ cd mowftee-guild
 
 Antigravity CLI dùng `./setup.sh install antigravity-cli` và `./setup.sh uninstall antigravity-cli`. Bỏ tên công cụ thì mặc định Antigravity App/IDE. Script chỉ cần Bash và các lệnh chép/xóa thông thường, không cần Python, pip hay npm.
 
-**Cập nhật:** sửa file trong repo hoặc kéo bản mới về, rồi chạy lại lệnh `install`. Lệnh này thay bản đã chép bằng nội dung hiện tại. Thư mục trùng tên từ nguồn khác được giữ nguyên; script báo vị trí để anh tự xem lại. Xem [chi tiết cài đặt](docs/installation.md).
+**Cập nhật:** sửa file trong repo hoặc chạy `git pull --ff-only` ở đúng nhánh, rồi chạy lại `install`. Bản đã cài sẽ được thay bằng nội dung trong repo; giữ tùy chỉnh ở repo trước khi cài lại. Nếu Git báo có thay đổi cục bộ hoặc nhánh phân kỳ, giữ các chỉnh sửa đó và xử lý trước. Thư mục trùng tên từ nguồn khác được giữ nguyên; xem [chi tiết cài đặt](docs/installation.md).
 
 ## Gọi skill để dùng
 
@@ -37,11 +39,11 @@ Chỉ gọi skill phù hợp đầu việc; không cần gọi đủ vai trò, t
 ## Nội dung trong repo
 
 - `skills/`: `SKILL.md` và runbook chuyên môn; đây là phần được chép vào host.
-- `workflows/`: các trình tự tham khảo cho MVP, tính năng mới, sửa lỗi, review, vận hành. Dùng khi thấy hữu ích.
-- `templates/memory/`: mẫu ghi chú dự án tùy chọn, có thể copy và điền bằng tay khi cần lưu kiến trúc hoặc tiến độ.
+- [Workflow](workflows/README.md): chọn trình tự cho MVP, tính năng, bảo trì, sửa lỗi hoặc phát hành.
+- [Mẫu ghi chú](templates/memory/README.md): chỉ copy phần hữu ích khi cần lưu; cài skill không tự tạo `.memory/`.
 - `setup.sh`: chép vào và gỡ ra. Không có manifest, profile, hash database, transaction hay dịch vụ chạy nền.
 
-Độ chi tiết nằm trong kiến thức và cách làm việc của skill. Các tài liệu phụ không phải thủ tục bắt buộc để sử dụng. Plugin/MCP chưa nằm trong bản này.
+Độ chi tiết nằm trong kiến thức và cách làm việc của skill. Các tài liệu phụ không phải thủ tục bắt buộc để sử dụng. Xem [giới thiệu plugin](docs/plugins.md) để hiểu cách đóng gói bộ skill và điểm khác với MCP.
 
 `SKILL.md` giữ phạm vi, quy tắc cốt lõi và đầu ra. Mỗi `references/runbook.md` có bảng quyết định và một ví dụ cụ thể để chọn cách xử lý, kiểm lỗi và nhận biết giới hạn. Ví dụ: [hai request tranh sản phẩm cuối](skills/backend/references/runbook.md), [kết quả tìm kiếm trả sai thứ tự](skills/frontend/references/runbook.md), [đổi cột khi app cũ vẫn chạy](skills/migration-specialist/references/runbook.md). Đây là hướng dẫn minh họa, không phải kết quả benchmark hành vi của trợ lý.
 

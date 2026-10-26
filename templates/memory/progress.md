@@ -1,30 +1,28 @@
 # Tiến độ: {{PROJECT_NAME}}
 
 > Mẫu ghi chú tùy chọn. Chỉ copy và điền phần hữu ích; không cần tạo đủ bộ để dùng skill.
-Cập nhật: {{DATE_UTC}}. Owner: tech-lead.
+
+Cập nhật: {{DATE_UTC}}.
 
 ## Phạm vi phiên làm việc
 
 - Yêu cầu được phép: chưa ghi nhận.
 - Các giới hạn của người dùng, gồm READ-ONLY hoặc chờ duyệt: chưa ghi nhận.
 - Snapshot / commit / dirty state: chưa ghi nhận.
-- Mức rủi ro và lý do: chưa phân loại.
+- Điều còn thiếu để tiếp tục: chưa ghi nhận.
 
 ## Đầu việc
 
-| ID | Kết quả cần bàn giao | Owner | Reviewer khi cần | Phụ thuộc | Trạng thái | AC / evidence |
-| --- | --- | --- | --- | --- | --- | --- |
-| Chưa tạo | Chưa xác định | Chưa phân công | Chưa phân công | Chưa xác định | QUEUED | NOT_RUN |
+| Việc cần làm | Phụ thuộc / điều kiện | Trạng thái | Kết quả kiểm tra |
+| --- | --- | --- | --- |
+| Chưa chọn | Chưa xác định | Chưa bắt đầu | NOT_RUN |
 
-Trạng thái công việc: QUEUED, IN_PROGRESS, IN_REVIEW, BLOCKED, DONE. DONE cần đáp ứng AC và có evidence; không tự tạo DONE từ mẫu.
+Ghi đang làm, bị chặn hoặc hoàn tất theo thực tế. Hoàn tất cần kết quả đối chiếu tiêu chí; không coi đã viết code là đã kiểm xong.
 
-## Vòng sửa
+## Điều đã thử và phần chưa giải quyết
 
-| Thời điểm | Tiêu chí bị lỗi | Bằng chứng | Owner sửa | Vòng | Kết quả kiểm lại |
-| --- | --- | --- | --- | --- | --- |
-
-Nếu chưa giải quyết được, ghi cách đã thử và hướng tiếp theo; không bỏ test chỉ để đánh dấu hoàn thành.
+Ghi triệu chứng, giả thuyết, dữ kiện thu được và hướng tiếp theo khi cần. Với bản sửa lỗi, giữ ca trước/sau cùng giới hạn; không bỏ test để đánh dấu hoàn thành.
 
 ## Bàn giao và việc chưa hoàn tất
 
-Ghi phần đã kiểm chứng, phần chưa chạy, câu hỏi chặn, quyết định còn chờ người dùng và người nhận bước tiếp theo.
+Ghi phần đã kiểm chứng, phần chưa chạy và bước tiếp theo. Chỉ thêm người nhận hoặc quyết định còn chờ khi thực sự có.
