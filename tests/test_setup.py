@@ -47,6 +47,35 @@ class SetupTests(unittest.TestCase):
                                  (ROOT/'skills'/name/'SKILL.md').read_bytes())
                 self.assertTrue((dest/name/'references/runbook.md').is_file())
                 self.assertTrue((dest/name/MARKER).is_file())
+                self.assertEqual((dest/name/'LICENSE.txt').read_bytes(),
+                                 (ROOT/'LICENSE').read_bytes())
+
+    def test_missing_source_license_does_not_replace_installed_skills(self):
+        self.run_setup('install','codex')
+        installed = self.dest/'backend/SKILL.md'
+        installed.write_text('KEEP INSTALLED COPY')
+        source = self.base/'incomplete repo'
+        source.mkdir()
+        shutil.copy2(ROOT/'setup.sh',source/'setup.sh')
+        (source/'skills/backend').mkdir(parents=True)
+        (source/'skills/backend/SKILL.md').write_text('NEW COPY')
+        self.run_setup('install','codex',source=source,expected=1)
+        self.assertEqual(installed.read_text(), 'KEEP INSTALLED COPY')
+        self.run_setup('uninstall','codex',source=source)
+        self.assertEqual(list(self.dest.iterdir()), [])
+
+    def test_skill_specific_license_is_preserved(self):
+        source = self.base/'repo with a specific notice'
+        source.mkdir()
+        for name in ('setup.sh', 'LICENSE'):
+            shutil.copy2(ROOT/name,source/name)
+        skill = source/'skills/example'
+        skill.mkdir(parents=True)
+        (skill/'SKILL.md').write_text('EXAMPLE SKILL')
+        (skill/'LICENSE.txt').write_text('SPECIFIC NOTICE TO PRESERVE')
+        self.run_setup('install','codex',source=source)
+        self.assertEqual((self.dest/'example/LICENSE.txt').read_text(),
+                         'SPECIFIC NOTICE TO PRESERVE')
 
     def test_reinstall_refreshes_own_copies_and_preserves_foreign_files(self):
         self.run_setup('install','codex')

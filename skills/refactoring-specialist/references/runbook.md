@@ -19,18 +19,25 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Bugfix trong refactor | Tách rõ hành vi được sửa và xin chốt phạm vi nếu chưa có. | AC hoặc finding giải thích semantics thay đổi. |
 | Đánh giá kết quả | Chạy regression liên quan; lợi ích hiệu năng cần phép đo riêng. | Before/after structure, tests và phần nợ còn lại. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Refactor plan: pain point, scope và observable invariants.
 - Diff rationale: boundary/coupling/testability cải thiện chỗ nào.
 - Verification: baseline, regression và behavior change được chấp nhận.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Không có cơ sở bảo toàn public behavior hoặc thay đổi cần vượt scope đã cho phép; đề xuất chia nhỏ trước khi sửa tiếp. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Không có cơ sở bảo toàn public behavior hoặc thay đổi cần vượt scope đã cho phép; đề xuất chia nhỏ trước khi sửa tiếp. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ refactor: tách tính tổng tiền khỏi endpoint
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Mục tiêu là làm logic dễ đọc/thử hơn, chưa phải thay quy tắc tính giá. Trước khi tách, ghi hành vi quan sát: cách làm tròn, thứ tự giảm giá/thuế, tiền tệ, dữ liệu thiếu và lỗi; đọc caller có phụ thuộc vào thứ tự xử lý hay không.
+
+1. Chọn các ví dụ đại diện từ yêu cầu và dữ liệu thử: giỏ rỗng, nhiều dòng, giảm giá, giá trị cần làm tròn và đầu vào không hợp lệ. Không tự biến hành vi tình cờ thành yêu cầu nếu nó mâu thuẫn nghiệp vụ; đánh dấu điểm đó riêng.
+2. Di chuyển phép tính thành hàm/module có ranh giới rõ, giữ kiểu dữ liệu và thứ tự thao tác; tránh tiện thể đổi dependency hoặc toàn bộ cấu trúc thư mục.
+3. So đầu ra và lỗi trước/sau theo cùng input; kiểm endpoint vẫn kiểm quyền và ghi dữ liệu ở đúng transaction như trước.
+4. Truy caller, export công khai, job và test trước khi xóa helper cũ; tìm kiếm văn bản có thể bỏ sót tên được tạo động hoặc cấu hình.
+
+Nếu phát hiện quy tắc làm tròn cũ sai, mô tả bug và phạm vi sửa riêng. Không giấu thay đổi số tiền trong diff mang tên “chỉ refactor”; dùng quyền và yêu cầu hiện có để quyết định phần sửa đó đã được cho phép chưa.
+
+Kết luận refactor nên chỉ ra cấu trúc nào dễ thay/thử hơn và hành vi nào đã đối chiếu. Giảm số dòng hoặc đổi tên hàm không tự chứng minh hiệu năng tốt hơn.

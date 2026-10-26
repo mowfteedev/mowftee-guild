@@ -19,18 +19,29 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Secret/session | Rà lifecycle, nơi lưu, rotation, cookie/token và log redaction theo mô hình auth thật. | Finding che secret, nguồn vị trí và test fix. |
 | AI/tool boundary | Tách dữ liệu từ instruction, validate output và enforce authorization tại tool/server. | Ca prompt injection không làm vượt quyền hoặc sinh side effect không được phép. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Threat model: assets, attackers, trust boundaries và assumptions.
 - Finding: exploit conditions, impact, confidence và evidence.
 - Remediation: owner, fix, regression và residual risk.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Test vượt phạm vi được phép; có secret thật cần xử lý; hoặc không thể kiểm exploit an toàn trên môi trường hiện có. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Test vượt phạm vi được phép; có secret thật cần xử lý; hoặc không thể kiểm exploit an toàn trên môi trường hiện có. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ truy vết quyền: tải hóa đơn bằng ID
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Đọc đường request → xác thực → truy vấn hóa đơn → tạo file/URL tải. Ranh giới cần kiểm là người dùng hoặc tenant có quyền trên đúng hóa đơn, không chỉ đã đăng nhập.
+
+Trong môi trường thử được phép, tạo hai principal A/B và hóa đơn riêng của mỗi bên. Dùng ID fixture, không dò ID hoặc tải tài liệu của người dùng thật.
+
+| Ca kiểm | Kết quả cần quan sát |
+| --- | --- |
+| A tải hóa đơn của A | Thành công theo quyền đã định nghĩa. |
+| A tải hóa đơn của B | Bị từ chối theo contract, không có nội dung file hoặc URL tải dùng được. |
+| A đổi tham số tenant ở query/body | Server vẫn dùng quyền đã xác thực và kiểm quan hệ tài nguyên. |
+| Sau lần tải của A, B gọi cùng đường cache | Cache không trả nội dung/redirect đã tạo cho A. |
+
+Nếu dùng URL ký sẵn, xem thời hạn và phạm vi sử dụng theo thiết kế thật. Không khẳng định một URL có chữ ký tự giải quyết quyền chia sẻ, cache hoặc việc URL xuất hiện trong log.
+
+Finding phải mô tả điều kiện, đường vượt quyền, dữ liệu có thể lộ và bằng chứng đã che nội dung. Chỉ đọc thấy query thiếu điều kiện tenant là dấu hiệu cần theo caller/policy; có thể quyền được áp ở tầng khác. Sau fix, thử cả chủ sở hữu và người không có quyền để tránh sửa bằng cách chặn tất cả.

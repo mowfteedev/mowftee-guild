@@ -36,12 +36,14 @@ Chỉ gọi skill phù hợp đầu việc. Không bắt buộc chạy đủ quy
 
 ## Nội dung trong repo
 
-- `skills/`: `SKILL.md`, runbook chuyên môn và license đi kèm; đây là phần được chép vào host.
+- `skills/`: `SKILL.md` và runbook chuyên môn; đây là phần được chép vào host.
 - `workflows/`: các trình tự tham khảo cho MVP, tính năng mới, sửa lỗi, review, vận hành. Dùng khi thấy hữu ích.
 - `templates/memory/`: mẫu ghi chú dự án tùy chọn, có thể copy và điền bằng tay khi cần lưu kiến trúc hoặc tiến độ.
 - `setup.sh`: chép vào và gỡ ra. Không có manifest, profile, hash database, transaction hay dịch vụ chạy nền.
 
 Độ chi tiết nằm trong kiến thức và cách làm việc của skill. Các tài liệu phụ không phải thủ tục bắt buộc để sử dụng. Plugin/MCP chưa nằm trong bản này.
+
+`SKILL.md` giữ phạm vi, quy tắc cốt lõi và đầu ra. Mỗi `references/runbook.md` có bảng quyết định và một ví dụ cụ thể để chọn cách xử lý, kiểm lỗi và nhận biết giới hạn. Ví dụ: [hai request tranh sản phẩm cuối](skills/backend/references/runbook.md), [kết quả tìm kiếm trả sai thứ tự](skills/frontend/references/runbook.md), [đổi cột khi app cũ vẫn chạy](skills/migration-specialist/references/runbook.md). Đây là hướng dẫn minh họa, không phải kết quả benchmark hành vi của trợ lý.
 
 ## Tài liệu và kiểm tra
 
@@ -54,4 +56,4 @@ bash -n setup.sh
 python3 -m unittest discover -s tests -v
 ```
 
-Python chỉ dùng cho bộ test phát triển, không cần khi cài/gỡ. Mã và nội dung gốc phát hành theo [MIT License](LICENSE).
+Python chỉ dùng cho bộ test phát triển, không cần khi cài/gỡ. Mã và nội dung gốc phát hành theo [MIT License](LICENSE). Repo giữ một bản license ở gốc; script chép bản đó thành `LICENSE.txt` trong mỗi skill được cài. Nếu chép riêng một skill bằng tay để chia sẻ, chép kèm `LICENSE` vào thư mục đó.

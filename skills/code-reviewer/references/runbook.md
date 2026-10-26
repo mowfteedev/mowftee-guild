@@ -19,18 +19,27 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Review hiệu năng | Tách phỏng đoán O(n²)/N+1 với workload thật và giới hạn input. | Query/caller/data size hoặc yêu cầu đo thêm. |
 | Báo cáo | Ghi finding ngắn ở vùng diff nhỏ nhất, kèm trigger và tác động; không bịa lỗi khi không tìm thấy. | Base/head, checks đã chạy, findings và giới hạn review. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Review scope: base/head, AC và file/caller đã đọc.
 - Findings: severity, location, trigger, impact và cách kiểm lại.
 - Verdict: blockers còn lại, checks đã chạy và phần cần runtime validation.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Không đủ contract hoặc caller để khẳng định lỗi; báo câu hỏi thay finding chắc chắn và không tự sửa khi chỉ được review. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Không đủ contract hoặc caller để khẳng định lỗi; báo câu hỏi thay finding chắc chắn và không tự sửa khi chỉ được review. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ phân biệt finding với nghi vấn: bỏ `await`
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Thấy diff đổi `await sendReceipt(order)` thành `sendReceipt(order)` chưa đủ để kết luận có bug. Lần theo caller, nơi bắt lỗi và vòng đời tiến trình:
+
+| Dữ kiện từ code | Cách kết luận |
+| --- | --- |
+| Promise bị bỏ, không bắt rejection; request vẫn trả thành công trong khi contract đòi gửi xong | Có đường sai contract cụ thể; nêu trigger và tác động. |
+| Công việc được giao cho hàng đợi bền vững; lỗi được xử lý ở worker | Không báo “thiếu await” chỉ từ hình thức của dòng diff. |
+| Tác vụ nền có catch nhưng môi trường có thể đóng tiến trình sau response | Kiểm yêu cầu độ bền và runtime; catch không chứng minh công việc sẽ hoàn tất. |
+| Chưa biết email bắt buộc hay best effort | Đặt câu hỏi có ảnh hưởng quyết định, không gán severity chắc chắn từ giả định. |
+
+Finding đủ rõ có dạng: “Trong đường tạo đơn X, response đóng trước tác vụ Y; khi Z xảy ra, người dùng nhận A nhưng dữ liệu/side effect là B. Vị trí liên quan …; kiểm lại bằng …”. Dẫn đoạn diff nhỏ nhất và caller cần để thấy tác động.
+
+Xếp ưu tiên theo hậu quả và khả năng xảy ra trong luồng thật. Tách góp ý đặt tên/format khỏi bug; nếu không tìm thấy lỗi thì báo đúng phạm vi đã đọc, không tạo finding để đủ số lượng.

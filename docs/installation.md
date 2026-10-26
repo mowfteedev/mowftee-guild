@@ -25,6 +25,10 @@ Chạy không tham số hoặc `--help` để xem cách dùng. Không truyền t
 
 Đối chiếu [OpenAI Docs](https://learn.chatgpt.com/docs/build-skills) và [Google Antigravity Docs](https://antigravity.google/docs/skills). Script chép mỗi thư mục trong `skills/` vào nơi tương ứng, giữ `SKILL.md` và runbook đi kèm. Chép xong có thể gọi skill theo cách của host.
 
+Repo chỉ giữ một [LICENSE](../LICENSE) ở gốc. Khi cài, script chép thêm bản license thành `LICENSE.txt` trong từng thư mục đích để skill được tách ra vẫn có thông báo bản quyền đi kèm. Nếu chép hoặc chia sẻ riêng một skill bằng tay, mang theo bản license này. `license: MIT` trong frontmatter là tên license, không phải toàn bộ nội dung của nó.
+
+Nếu sau này một skill có `LICENSE.txt` riêng theo nguồn của nó, script giữ nguyên file đó thay vì ghi đè bằng license chung.
+
 ## Cập nhật
 
 Chỉnh nội dung ở bản repo rồi chạy lại `install`. Bản đã chép sẽ được thay thế, gồm cả tài liệu đi kèm. Nếu cần tùy chỉnh, sửa ở repo để lần cài sau giữ đúng nội dung anh muốn.

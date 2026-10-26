@@ -4,7 +4,7 @@
 
 Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu cầu chạy tất cả cho mọi thay đổi.
 
-1. Chỉ sửa một lỗi chính tả: giao trực tiếp, không dựng hội đồng.
+1. Chỉ sửa một lỗi chính tả: sửa trực tiếp và xem lại diff.
 2. Hai cách giải thích trái nhau: kiểm tra cùng phiên bản và tái hiện để chọn cách có bằng chứng.
 3. Làm một mình: chia phần hợp lý, triển khai lần lượt rồi tự kiểm kết quả.
 4. Bị giới hạn READ-ONLY: chỉ phân tích và đề xuất, không ghi progress vào dự án.
@@ -19,18 +19,28 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Đánh giá mâu thuẫn | So commit, môi trường và dữ liệu trước khi chọn phương án. | Hai nguồn evidence và kết quả tái hiện cùng điều kiện. |
 | Cần tự phản biện | Đọc lại giả định, diff và trường hợp biên; không cần thêm người duyệt. | Phát hiện thực tế, điều đã thử và giới hạn còn lại. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
-- Task map: owner, scope, dependency, AC, evidence.
-- Decision log: dữ kiện, lựa chọn, hệ quả, người quyết định.
-- Handoff: phần hoàn tất, phần chưa chạy, điều kiện mở bước sau.
-
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
+- Kế hoạch ngắn khi có nhiều phần: phạm vi, phụ thuộc và cách kiểm kết quả.
+- Quyết định đáng giữ lại: dữ kiện, lựa chọn và hệ quả.
+- Bàn giao: phần hoàn tất, phần chưa chạy và bước tiếp theo.
 
 ## Điều kiện dừng phần phụ thuộc
 
-Chưa xác định được nguyên nhân sau các cách đã thử; thiếu quyền bước cần thiết; hoặc contract giữa hai nhánh còn mâu thuẫn. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Chưa xác định được nguyên nhân sau các cách đã thử; thiếu quyền bước cần thiết; hoặc contract giữa hai nhánh còn mâu thuẫn. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ: thêm tính năng xuất danh sách đơn hàng
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Yêu cầu “thêm nút xuất CSV” thường chạm vào quyền đọc, bộ lọc hiện tại, dữ liệu và UI. Đọc luồng đang có để xác định phần thật sự thiếu trước khi chia việc.
+
+| Phát hiện từ repo | Cách triển khai phù hợp |
+| --- | --- |
+| Đã có endpoint xuất, chỉ thiếu nút | Nối UI với contract hiện có; thử quyền, bộ lọc và trạng thái lỗi. |
+| Chưa có endpoint, dữ liệu ít trong giới hạn đã biết | Cân nhắc xử lý đồng bộ; giữ cùng điều kiện lọc và phân quyền với danh sách. |
+| Dữ liệu lớn hoặc vượt thời gian request thực tế | Khảo sát giới hạn và nhu cầu trước khi chọn streaming hay job nền; không tự thêm queue. |
+
+Thứ tự hợp lý khi cần cả server và UI: chốt cột/quyền/phạm vi lọc → làm đường xuất → nối UI → đối chiếu file với dữ liệu nguồn. Không cần tổ chức các bước thành các agent riêng.
+
+Tự phản biện bằng ba câu hỏi: file có vô tình chứa đơn ngoài tenant không; “xuất tất cả” là toàn bộ kết quả lọc hay chỉ trang đang xem; lỗi giữa lúc tải có để lại một file trông như hoàn chỉnh không? Câu hỏi làm đổi ý nghĩa sản phẩm phải được chốt, còn nhãn nút hay cách đặt helper có thể theo quy ước repo.
+
+Kế hoạch đủ dùng cho việc nhỏ có thể chỉ là vài dòng trong hội thoại. Chỉ tạo task map hoặc decision log khi nó giúp theo dõi nhiều phần phụ thuộc.

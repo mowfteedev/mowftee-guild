@@ -19,18 +19,27 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | So trước/sau | Giữ điều kiện tương đương; báo phân vị, error rate, resource và độ nhiễu. | Raw samples, summary và đúng snapshot. |
 | Kết luận | Chấp nhận hoặc bác giả thuyết theo budget đã chọn; nêu giới hạn ngoại suy. | Delta có cơ sở cùng correctness/regression results. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Experiment plan: hypothesis, metric, workload và stop condition.
 - Measurements: before/after, samples, environment và errors.
 - Decision: benefit, cost, regression và uncertainty.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Môi trường không được phép load/profile; phép đo không so sánh được; hoặc correctness lỗi làm vô nghĩa con số latency. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Môi trường không được phép load/profile; phép đo không so sánh được; hoặc correctness lỗi làm vô nghĩa con số latency. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ điều tra: danh sách tải chậm sau khi thêm thông tin khách
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Trước khi thêm cache, ghi đường đo từ request UI đến response và render. Giả thuyết có thể là N+1 query, API đối tác chậm hoặc render quá nhiều; chọn theo trace thay vì đoán từ triệu chứng “chậm”.
+
+| Bước | Dữ liệu cần giữ |
+| --- | --- |
+| Baseline | Commit, máy/runtime, dữ liệu và phân bố, bộ lọc, số dòng trả về, cache nóng/lạnh, lỗi và timeout. |
+| Kiểm giả thuyết N+1 | Query count tăng thế nào khi số mục tăng; thời gian nằm ở DB, network hay phần khác. |
+| Thử một thay đổi | Giữ nguyên kết quả/quyền/phân trang, tránh join làm nhân số dòng hoặc tải thừa dữ liệu. |
+| So sánh | Cùng workload và điều kiện; xem phân vị latency, throughput đạt được, lỗi và tài nguyên. |
+
+Đo nhiều quan sát đủ để thấy độ nhiễu theo mục tiêu, không lấy một lần nhanh nhất làm kết quả. Nếu tập dữ liệu sau sửa nhỏ hơn hoặc nhiều response lỗi hơn thì phép so sánh chưa tương đương.
+
+Kết luận nên nói “giảm phần thời gian/query nào trong điều kiện đã thử”, kèm dữ liệu thô khi có. Không biến tỷ lệ cải thiện trên laptop thành cam kết production. Nếu đo bác giả thuyết N+1, giữ kết quả đó và chuyển sang đường chậm đã quan sát, không tiếp tục thêm cache chỉ vì đã dự định.

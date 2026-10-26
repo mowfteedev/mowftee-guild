@@ -27,6 +27,10 @@ if [[ -L "$DEST_DIR" ]]; then
   exit 1
 fi
 if [[ "$ACTION" == 'install' ]]; then
+  if [[ ! -f "$SOURCE_DIR/LICENSE" ]]; then
+    echo "Thiếu LICENSE ở repo nguồn: $SOURCE_DIR" >&2
+    exit 1
+  fi
   mkdir -p "$DEST_DIR"
 elif [[ ! -d "$DEST_DIR" ]]; then
   echo 'Chưa có skill nào để gỡ.'
@@ -58,6 +62,9 @@ if [[ "$ACTION" == 'install' ]]; then
     mkdir -p "$target"
     : > "$target/$MARKER"
     cp -R "$source/." "$target/"
+    if [[ ! -e "$target/LICENSE.txt" && ! -L "$target/LICENSE.txt" ]]; then
+      cp "$SOURCE_DIR/LICENSE" "$target/LICENSE.txt"
+    fi
     count=$((count + 1))
   done
   echo "Đã chép $count skill vào $DEST_DIR"

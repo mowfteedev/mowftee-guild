@@ -19,18 +19,27 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Recovery | Kiểm lại luồng người dùng và sự ổn định trong cửa sổ phù hợp. | SLI/transaction evidence, không chỉ process status. |
 | Postmortem | Tách contributing factors, mitigation và root cause; follow-up cụ thể. | Timeline, lessons và action có owner/exit criteria. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Incident record: impact, scope, permission và timeline.
 - Mitigation log: hypothesis, decision, action, result.
 - Postmortem: nguyên nhân có bằng chứng, follow-up và owner.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Chạm quyền chưa có, phương án không thể phục hồi an toàn hoặc dữ liệu quan trọng mâu thuẫn; chuyển owner và tiếp tục quan sát được phép. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Chạm quyền chưa có, phương án không thể phục hồi an toàn hoặc dữ liệu quan trọng mâu thuẫn; chuyển owner và tiếp tục quan sát được phép. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ triage: nhiều lỗi sau một lần triển khai
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Đầu tiên xác nhận lúc nào, endpoint nào, nhóm người dùng nào bị ảnh hưởng; so tín hiệu trước/sau và artifact đang chạy. “Vừa deploy nên chắc do deploy” là giả thuyết, chưa phải nguyên nhân đã xác minh.
+
+| Quan sát | Hướng kiểm tiếp |
+| --- | --- |
+| Chỉ bản mới lỗi, cùng dependency/dữ liệu | So thay đổi config/code và xem phương án quay về bản cũ có tương thích schema hiện tại không. |
+| Cả bản cũ và mới cùng timeout DB | Xem connection, lock, tải và thay đổi hạ tầng; rollback app có thể không giải quyết. |
+| Tỷ lệ lỗi thấp nhưng queue lag tăng | Đo ảnh hưởng đầu cuối; lỗi có thể chưa biểu hiện thành HTTP error. |
+| Thiếu quyền thao tác production | Tiếp tục thu dữ liệu được phép, đưa hành động cụ thể và điều kiện kiểm lại cho người có quyền. |
+
+Với mitigation đã được phép, ghi thời điểm, hành động, điều kiện thành công và tín hiệu quan sát. Sau hành động, kiểm cả traffic thành công và backlog; process sống không đồng nghĩa dịch vụ đã hồi phục. Không thay nhiều cấu hình cùng lúc nếu không cần, vì sẽ khó biết điều gì có tác dụng.
+
+Trong postmortem, tách nguyên nhân được chứng minh, yếu tố góp phần và phần chưa biết. Hành động theo sau phải chữa cơ chế gây lỗi hoặc giảm thời gian phát hiện/phục hồi; “cẩn thận hơn” không đủ để kiểm chứng. Không gửi thông báo cho người khác chỉ vì mẫu incident có mục liên lạc.

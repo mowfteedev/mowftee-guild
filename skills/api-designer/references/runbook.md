@@ -19,18 +19,30 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Error và retry | Tách lỗi client, conflict, rate limit, dependency và lỗi nội bộ; tránh lộ tài nguyên nhạy cảm. | Error schema, status mapping và retry guidance. |
 | Rollout nhiều client | Kiểm client cũ trong thời gian chuyển đổi; có deprecation hoặc version strategy khi breaking. | Consumer contract tests và migration note. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Contract: endpoint, auth, schema, errors, limits.
 - Compatibility report: consumer, before/after và rollout.
 - Test vectors: payload tốt/xấu, conflict, pagination và từ chối quyền.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Chưa biết consumer bị ảnh hưởng hoặc chưa thống nhất hành vi public có tác động dữ liệu/tiền/quyền. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Chưa biết consumer bị ảnh hưởng hoặc chưa thống nhất hành vi public có tác động dữ liệu/tiền/quyền. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ contract: cập nhật hồ sơ từng phần
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Với một API nhận `display_name` và `phone`, xác định ý nghĩa của field bị bỏ qua, giá trị `null` và chuỗi rỗng. Không gán semantics của một chuẩn PATCH cụ thể nếu API chưa dùng chuẩn đó.
+
+Một contract minh họa đã được chủ sản phẩm đồng ý có thể là:
+
+| Payload | Ý nghĩa |
+| --- | --- |
+| `{}` | Không đổi hồ sơ, theo hành vi no-op đã chọn. |
+| `{"display_name": "An"}` | Chỉ đổi tên, giữ số điện thoại. |
+| `{"phone": null}` | Xóa số điện thoại nếu field được phép xóa. |
+| `{"display_name": null}` | Lỗi validation vì tên không được null. |
+| `{"phone": ""}` | Xử lý theo quy tắc riêng đã chốt; không mặc nhiên coi giống null. |
+
+Đối chiếu serializer và client: client có gửi null cho tất cả field chưa điền không, backend có vô tình biến field bị thiếu thành null không? Nếu có cập nhật đồng thời, quyết định có cần điều kiện phiên bản hay chấp nhận ghi đè; mô tả rõ lỗi xung đột và cách client phục hồi.
+
+Một thay đổi từ “bỏ qua null” sang “null nghĩa là xóa” có thể xóa dữ liệu của client cũ. Vì vậy compatibility phải xem payload và consumer thật. Bàn giao các test vector trên cùng schema, quyền sửa từng field và error shape của dự án; không tự đặt mã lỗi khác hệ thống chỉ để theo ví dụ.

@@ -19,18 +19,29 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Static checks | Kiểm frontmatter, tên thư mục và link, chưa kết luận agent behavior. | Command, exit code và danh sách validator đã chạy. |
 | Behavioral checks | Chạy request trên host/model với artifact tối thiểu và không lộ expected answer. | Transcript, actual actions, independent/self-review và limitations. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Skill design: intent, boundary, inputs, outputs và stop conditions.
 - Validation report: static/script/behavioral tách riêng.
 - Migration/provenance: thay đổi trigger, tài nguyên, license và nguồn.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Chưa có quyền cài/kích hoạt plugin, không thể đánh giá hành vi trong môi trường hiện tại hoặc nguồn tái sử dụng chưa rõ license. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Chưa có quyền cài/kích hoạt plugin, không thể đánh giá hành vi trong môi trường hiện tại hoặc nguồn tái sử dụng chưa rõ license. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ đánh giá chiều sâu mà không tăng thủ tục
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Một skill “database” chỉ nói “thiết kế schema tốt, tối ưu index, viết test” chưa thay đổi đáng kể quyết định của trợ lý. Một hướng dẫn hữu ích hơn là chỉ ra cách gắn index với workload, xem chi phí ghi và không coi seq scan trên bảng nhỏ là lỗi mặc định.
+
+Kiểm từng đoạn bằng câu hỏi: bỏ đoạn này đi thì trợ lý có dễ chọn sai trong tình huống nào? Nếu không trả lời được, cân nhắc bỏ hoặc rút ngắn. Độ dài và số heading không thay cho giá trị chuyên môn.
+
+| Vấn đề quan sát | Cách sửa phù hợp |
+| --- | --- |
+| Hai description đều hút mọi việc API | Tách thiết kế contract và triển khai hành vi; cho ví dụ trigger của mỗi bên. |
+| Runbook lặp entrypoint | Giữ nguyên tắc ở entrypoint, chuyển reference thành ví dụ quyết định hoặc ca chẩn đoán. |
+| Thiếu hướng dẫn khi có hai phương án đều hợp lệ | Thêm điều kiện chọn, đánh đổi và dữ kiện cần xem; không chốt một stack chung. |
+| Có nhiều dòng về báo cáo hơn chuyên môn | Thu gọn quy tắc chung; giữ đầu ra theo quy mô tác vụ. |
+
+Thử routing bằng yêu cầu như “thiết kế request/response cập nhật hồ sơ” và “sửa xử lý cập nhật hồ sơ đang bỏ qua null”. Sau đó thử một yêu cầu không thuộc skill để xem description có quá rộng không. Đọc file và dự đoán routing chỉ là tự đánh giá nội dung; chỉ gọi là thử hành vi khi đã thực thi request trên host và quan sát kết quả.
+
+Mỗi skill giữ được hướng dẫn độc lập sau khi chép. Repo này dùng một LICENSE gốc, script mang bản đó theo lúc cài; không tạo cơ chế kế thừa instruction hoặc yêu cầu tải toàn bộ guild cho một đầu việc.

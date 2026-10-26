@@ -19,21 +19,16 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Kiểm lại snapshot | Thay code/config/data liên quan làm evidence cần đánh giá lại. | Commit, dirty state hoặc artifact digest trước/sau. |
 | Kết luận | PASS chỉ bao phủ phần đã thử; thiếu browser hoặc dependency thì nêu rõ phần chưa thử. | Kết luận có scope, independent/self-check và rủi ro còn lại. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Acceptance matrix: AC, trạng thái, evidence, giới hạn.
 - Defect report: trigger, expected/actual, severity và owner.
 - Verdict: snapshot, phạm vi đã thử, phần còn mở và bước tiếp.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Thiếu môi trường cho AC bắt buộc; không xác minh được snapshot; hoặc yêu cầu cấp chứng nhận khi chưa có evidence. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Thiếu môi trường cho AC bắt buộc; không xác minh được snapshot; hoặc yêu cầu cấp chứng nhận khi chưa có evidence. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
-
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
 
 ## Tổng hợp kết luận nghiệm thu
 
@@ -48,3 +43,16 @@ Chọn AC bắt buộc theo phạm vi đã thống nhất trước khi kiểm tr
 | Chưa chốt AC/phạm vi | NOT_RUN, chưa đủ cơ sở nghiệm thu |
 
 NOT_APPLICABLE không được dùng để bỏ một yêu cầu đã chốt. Bản nháp có thể được push để review theo quyền đã có; đó không phải chứng nhận sẵn sàng phát hành.
+
+## Phiên khám phá: form lưu địa chỉ giao hàng
+
+Mục tiêu là xác nhận người dùng biết địa chỉ nào đã được lưu và không mất dữ liệu đang nhập khi lỗi. Bắt đầu bằng một luồng hợp lệ, rồi chọn biến thể theo code và rủi ro thực:
+
+- Gửi thiếu trường bắt buộc: thông báo gắn đúng trường, giữ phần đã nhập và cho sửa bằng bàn phím.
+- Server từ chối quyền sau khi session thay đổi: không thông báo đã lưu, không để lộ địa chỉ của tài khoản trước.
+- Lưu xong ở server nhưng response bị mất: tải lại để kiểm trạng thái trước khi kết luận “không lưu”; thử lại không tạo địa chỉ lặp nếu quy tắc yêu cầu chống lặp.
+- Đổi route lúc request chờ rồi quay lại: dữ liệu và trạng thái tải thuộc lần mở hiện tại, không bị response cũ ghi đè.
+
+Một defect có thể ghi: “Khi request lưu trả lỗi validation, form bị reset nên mất các trường hợp lệ đã nhập; tái hiện bằng các bước …; mong đợi giữ dữ liệu theo yêu cầu …”. Tách lỗi quan sát được khỏi giả thuyết về nguyên nhân trong code.
+
+Nếu chỉ có test API mà chưa có browser, kết luận phần API đã kiểm riêng; các tiêu chí giữ input, focus và bố cục vẫn chưa được thử. Mẫu kết luận cho tình huống này không phải chứng nhận toàn bộ form đã đạt.

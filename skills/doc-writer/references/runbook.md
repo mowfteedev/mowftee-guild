@@ -19,18 +19,25 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Examples/evidence | Ví dụ ghi rõ là minh họa; template mặc định NOT_RUN; secret chỉ placeholder. | Mẫu không có số đo giả hoặc credential thật. |
 | Handoff | Kết nối artifact, version, limitations, owner và troubleshooting. | Link tồn tại, phạm vi đã test và câu hỏi còn mở. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Docs diff: đối tượng đọc, mục tiêu và điều thay đổi.
 - Verification: commands, links và môi trường đã thử.
 - Handoff notes: prerequisites, migration, limitations và owner.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Không có thông tin để khẳng định behavior; giữ unknown hoặc hỏi owner, không bịa chức năng để hoàn tất tài liệu. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Không có thông tin để khẳng định behavior; giữ unknown hoặc hỏi owner, không bịa chức năng để hoàn tất tài liệu. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ sửa quickstart khi CLI đã đổi
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Giả sử README còn lệnh `tool init --profile personal`, nhưng CLI hiện chỉ có `tool install codex`. Đây là ví dụ về drift tài liệu, không phải lệnh để chạy trong repo này.
+
+1. Đọc entrypoint/help và test để xác định option, default và side effect thật. Tìm các lệnh cũ trong README, docs và ví dụ bằng tìm kiếm toàn repo.
+2. Viết lại một đường đi tối thiểu từ bản clone sạch, với prerequisite và working directory rõ. Không giữ option đã bỏ dưới dạng “cách khác” nếu CLI không hỗ trợ.
+3. Chạy trong môi trường tạm với HOME/đích thử khi có thao tác cài/gỡ; kiểm file tạo ra và dữ liệu được giữ, không chỉ exit code.
+4. Viết phần cập nhật/gỡ theo cùng cơ chế hiện tại và nêu bản tùy chỉnh nào có thể bị thay thế. Kiểm link sau khi đổi tên hoặc xóa file.
+
+Đầu ra mong đợi trong hướng dẫn là mô tả hành vi; transcript thực chỉ ghi môi trường đã chạy. Nếu chưa thử trên một host, đừng chép kết quả từ host khác sang.
+
+Một tài liệu dễ dùng cần trả lời được: cần gì trước khi chạy, chạy ở đâu, kết quả nằm ở đâu, kiểm thành công thế nào, lỗi thường gặp xử lý ra sao. Không cần thêm manual cho mỗi skill nếu entrypoint và reference đã đủ.

@@ -14,23 +14,32 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Tình huống | Cách quyết định | Evidence cần tìm hoặc tạo |
 | --- | --- | --- |
 | Chốt snapshot | Ràng buộc scope với commit/artifact; xem thay đổi kể từ evidence. | Head SHA, digest, AC và check results. |
-| Gate chất lượng | Kiểm blocker, failed/pending checks, mức độc lập và exception được duyệt. | Gate matrix và owner chấp nhận rủi ro có căn cứ. |
+| Kiểm tra liên quan | Đối chiếu lỗi còn mở và check bắt buộc của repo; chọn mức kiểm theo hành động thực tế. | Kết quả check đúng commit và phần chưa chạy. |
 | Compatibility/migration | Xác định thứ tự app/schema/consumer và cửa sổ hỗ trợ. | Rollout map, backward/forward compatibility và điểm contract. |
 | External action | Phân quyền push/PR/merge/tag/deploy riêng; chỉ làm phần được yêu cầu. | URL/id/SHA cùng trạng thái trả về thật. |
 | Sau hành động | Kiểm remote SHA hoặc runtime signals phù hợp; giữ phần pending rõ ràng. | Remote ref, CI run hoặc smoke evidence đúng artifact. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
-- Readiness packet: scope, snapshot, evidence và open risks.
+- Phạm vi thực hiện: commit/artifact, kết quả kiểm tra và điểm còn mở.
 - Rollout/recovery: stages, signals, stop conditions và owner.
 - Action result: quyền, URL/id/SHA, status và handoff.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Check bắt buộc chưa đạt, quyền action chưa có hoặc rollback/roll-forward chưa rõ cho bước có thể làm mất dữ liệu. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Check bắt buộc chưa đạt, quyền action chưa có hoặc rollback/roll-forward chưa rõ cho bước có thể làm mất dữ liệu. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ phạm vi: “push lên cho anh xem”
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Đây là yêu cầu đưa thay đổi lên remote để xem. Kiểm nhánh và remote hiện tại, đọc diff, chạy các kiểm tra liên quan và commit phạm vi đã làm. Sau push, đối chiếu remote ref với commit local; xem check của chính commit đó nếu repo có CI.
+
+| Trạng thái thực | Cách báo |
+| --- | --- |
+| Push thành công, CI còn chạy | Có link nhánh/commit, CI đang chạy; chưa kết luận check đạt. |
+| Check thất bại | Nêu job/lỗi, sửa trong phạm vi và kiểm lại; không gộp CI cũ thành kết quả của bản mới. |
+| Branch chứa thay đổi ngoài đầu việc | Đọc và bảo toàn thay đổi của người dùng; không đưa vào commit một cách vô tình. |
+| User chưa yêu cầu merge/tag/deploy | Hoàn tất bản để xem; những hành động đó có tác động riêng, không suy ra từ lệnh push. |
+
+Không áp cả một hồ sơ phát hành production cho việc push tài liệu. Kết quả đủ dùng là link, commit, nội dung đổi và kết quả kiểm tra thật.
+
+Nếu yêu cầu là deploy, mới bổ sung artifact/môi trường, tương thích schema, tín hiệu sau triển khai và điều kiện phục hồi phù hợp. Với migration phá dữ liệu, quay lại binary cũ chưa chắc là phương án rollback hợp lệ. Dùng quyền đã cấp xuyên suốt phiên, không hỏi lại từng bước đã được cho phép.

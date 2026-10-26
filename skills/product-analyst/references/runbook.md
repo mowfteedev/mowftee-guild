@@ -19,18 +19,29 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Tính năng kéo thêm scope | Tách bắt buộc, tùy chọn và ngoài phạm vi; ghi tác động deadline hoặc dependency. | Scope diff và quyết định người có thẩm quyền. |
 | AC thay đổi sau triển khai | Đánh giá lại phần code/test/docs bị ảnh hưởng; không sửa AC để hợp thức lỗi. | Lịch sử AC và lý do thay đổi. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Spec: người dùng, vấn đề, phạm vi và AC.
 - Business rules: quyền, trạng thái, rounding/timezone khi có.
 - Open questions: tác động, owner và phần có thể tiếp tục.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Thiếu quy tắc làm thay đổi kết quả nghiệp vụ quan trọng; các bên chưa thống nhất AC bắt buộc. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Thiếu quy tắc làm thay đổi kết quả nghiệp vụ quan trọng; các bên chưa thống nhất AC bắt buộc. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ: biến “cho phép hủy đơn” thành yêu cầu làm được
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Đừng tự suy ra đơn nào cũng được hủy. Đọc trạng thái đơn, quyền hiện tại và cách thanh toán trước; nếu thiếu quy tắc hủy sau khi giao hàng hoặc hoàn tiền, đó là câu hỏi nghiệp vụ cần trả lời.
+
+Giả sử người dùng đã xác nhận phạm vi: khách được hủy đơn của mình khi chưa giao cho vận chuyển; việc hủy và hoàn tiền là hai trạng thái riêng. Khi đó có thể mô tả:
+
+| Tiền đề | Hành động | Kết quả cần quan sát |
+| --- | --- | --- |
+| Đơn của mình còn được hủy | Xác nhận hủy | Trạng thái hủy được lưu; UI phản ánh kết quả server. |
+| Đơn đã hủy | Gửi lại thao tác | Không lặp hoàn kho hoặc tạo thêm yêu cầu hoàn tiền. |
+| Đơn thuộc khách khác | Gọi trực tiếp API hủy | Bị từ chối theo quy ước của hệ thống, dữ liệu không đổi. |
+| Đơn vừa chuyển sang đang giao | Gửi yêu cầu hủy từ màn hình cũ | Server quyết định theo trạng thái hiện tại; UI giải thích và tải lại dữ liệu. |
+
+Đây là ví dụ giả định, không phải quy tắc áp cho mọi cửa hàng. Cần tách việc “đã hủy đơn” với “đã hoàn tiền”; không cho một toast thành công đại diện cả hai nếu hệ thống xử lý bất đồng bộ.
+
+Đầu ra đủ dùng: phạm vi hủy, bảng hành vi trên, các quyết định còn thiếu và điều không làm trong lần này. Dùng mã AC khi cần truy vết nhiều tiêu chí; một yêu cầu nhỏ không cần biểu mẫu dài.

@@ -19,18 +19,25 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Upgrade | Chọn thay đổi nhỏ, đọc release notes, cập nhật lockfile bằng package manager chuẩn. | Before/after versions, runtime compatibility và tests. |
 | Provenance/license | Đọc license file và nguồn từng phần được dùng; badge tổng hợp không đủ. | File nguồn, commit, license text reference và attribution cần giữ. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Inventory: package, version, source, dependency chain.
 - Assessment: advisory, reachability, priority và quyết định.
 - Upgrade/exception plan: owner, kiểm thử, lý do và ngày xem lại.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Không kết nối advisory source hoặc thiếu lockfile; ghi giới hạn thay vì tuyên bố không có rủi ro. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Không kết nối advisory source hoặc thiếu lockfile; ghi giới hạn thay vì tuyên bố không có rủi ro. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ xử lý một cảnh báo dependency bắc cầu
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Giả sử scanner báo `parser-lib` dễ bị tấn công. Đây là tên minh họa, không phải advisory thật. Bắt đầu từ lockfile để xác định resolved version và chuỗi phụ thuộc, rồi đọc advisory chính thức tại thời điểm kiểm tra.
+
+1. Đối chiếu package ecosystem, phiên bản bị ảnh hưởng và điều kiện khai thác; không ghép một CVE chỉ vì trùng tên.
+2. Xác định package chạy trong server, trình duyệt, build hay test. Build-only vẫn có thể quan trọng nếu CI xử lý nội dung không tin cậy; không tự xếp bằng không.
+3. Xem có bản sửa tương thích và parent dependency nào quyết định version. Ưu tiên cập nhật qua package manager; override cần được kiểm tương thích, không chỉ sửa số trong lockfile.
+4. Chạy kiểm tra liên quan và xem lại cây phụ thuộc đã resolve. Cảnh báo biến mất không chứng minh thay đổi không làm hỏng runtime.
+
+Nếu advisory chỉ ảnh hưởng một feature chưa bật, ghi cấu hình/call path làm căn cứ và điều kiện có thể khiến kết luận đổi. Nếu không truy cập được advisory, báo chưa đối chiếu; đầu ra scanner lỗi mạng không phải kết quả “không có lỗ hổng”.
+
+Kết quả đủ dùng gồm package/version/path, URL và ngày đọc advisory, điều kiện áp dụng, phương án cập nhật và phần kiểm chứng. Không tự suy ra giấy phép của toàn repo từ license một package; nếu cần quyết định pháp lý ngoài dữ kiện file thì nêu rõ giới hạn đánh giá.

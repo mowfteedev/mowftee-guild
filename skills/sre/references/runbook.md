@@ -19,18 +19,28 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Capacity/backpressure | Đo saturation, queue, dependency và giới hạn tài nguyên theo workload. | Load/capacity evidence và điều kiện mở rộng. |
 | Recovery | Diễn tập restore/failover theo quyền, đo RPO/RTO thay vì hứa từ cấu hình. | Drill timeline, data integrity và phần chưa thử. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Service objectives: user journey, SLI, SLO và owner.
 - Observability/alert map: tín hiệu, action và runbook.
 - Recovery report: scenario, actual RPO/RTO, integrity và residual risk.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Chưa có mục tiêu kinh doanh để cam kết SLA; diễn tập ảnh hưởng hệ thống thật ngoài quyền được cấp. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Chưa có mục tiêu kinh doanh để cam kết SLA; diễn tập ảnh hưởng hệ thống thật ngoài quyền được cấp. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ chọn SLI cho tác vụ xuất báo cáo nền
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+HTTP `202 Accepted` chỉ xác nhận đã nhận việc; nếu job treo thì người dùng vẫn chưa có báo cáo. Chọn tín hiệu theo kết quả đầu cuối, dựa trên nhu cầu thật đã thống nhất.
+
+| Tín hiệu | Định nghĩa cần chốt |
+| --- | --- |
+| Tỷ lệ hoàn tất đúng hạn | Số job hợp lệ hoàn tất trong hạn / số job hợp lệ đã đến hạn đánh giá; định nghĩa job hủy/lỗi đầu vào. |
+| Thời gian chờ và xử lý | Mốc enqueue/start/finish, cùng job ID; phân biệt queue delay với execution time. |
+| Độ trễ quan sát | Telemetry đến muộn hoặc mất phải hiện là khoảng trống, không tự tính như không có lỗi. |
+
+Không lấy số job kết thúc trong một cửa sổ chia cho số job tạo cùng cửa sổ nếu hai nhóm không khớp. Quy định cohort/cửa sổ để job chưa đủ tuổi không bị tính sai, đồng thời không bỏ quên job bị treo.
+
+Alert cần dẫn đến hành động: xác định queue/dependency nào, backlog có tăng, worker còn tiến triển và ảnh hưởng job nào. CPU thấp không loại trừ nghẽn do chờ DB hoặc dịch vụ ngoài. Với hệ thống cá nhân, chỉ thiết lập kênh nhận và mức phức tạp mà người dùng thực sự cần; không bịa đội on-call.
+
+Nếu diễn tập phục hồi, đo từ mốc sự cố đã định nghĩa đến khi báo cáo có thể tạo/tải lại và kiểm tính toàn vẹn. Chỉ thấy worker khởi động không đủ để kết luận đã khôi phục hành trình người dùng.

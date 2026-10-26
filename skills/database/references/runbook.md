@@ -19,18 +19,27 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Connection pool | Đo contention, latency, query mix và tài nguyên; xem session state với pool mode. | Số connection, queue, timeout và tải tương ứng. |
 | RLS/retention | Kiểm role/bypass và vòng đời tenant context; xác định xóa, lưu giữ và audit theo yêu cầu. | Ca user/tenant khác nhau và trạng thái dữ liệu sau xóa. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Schema proposal: entities, constraints, nullability và ownership.
 - Query report: workload, plan, index rationale và chi phí ghi.
 - Migration handoff: diff, kích thước, compatibility và invariant.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Thiếu workload hoặc engine/version để chốt hành vi; không được phép thực thi query có side effect trên môi trường thật. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Thiếu workload hoặc engine/version để chốt hành vi; không được phép thực thi query có side effect trên môi trường thật. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ đọc workload: danh sách đơn theo khách hàng
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Giả sử query phổ biến lọc `tenant_id`, `customer_id`, sắp xếp `created_at DESC, id DESC`, rồi lấy một trang nhỏ. Trước khi thêm index, xem engine/version, index hiện có, số dòng từng tenant và tỷ lệ đọc/ghi.
+
+Một composite index bắt đầu bằng các điều kiện bằng và tiếp theo là khóa sắp xếp là ứng viên để khảo sát, không phải đáp án mặc định. So kế hoạch và thời gian thực thi trên dữ liệu đại diện; tenant lớn, customer ít đơn hoặc query bỏ một bộ lọc có thể tạo kế hoạch khác.
+
+| Quan sát | Câu hỏi kế tiếp |
+| --- | --- |
+| Quét nhiều dòng rồi sort để lấy ít dòng | Index có phù hợp điều kiện lọc/thứ tự, hay query biến đổi cột khiến không dùng được đường truy cập mong muốn? |
+| Query nhanh nhưng ghi chậm sau thêm index | Chi phí duy trì index, dung lượng và trùng lặp với index cũ ra sao? |
+| Trang sau trùng hoặc thiếu đơn | Có thứ tự xác định khi trùng thời gian không; cursor có biểu diễn đủ khóa sort và quy tắc dữ liệu thay đổi không? |
+| Môi trường thử nhanh, thực tế chậm | Phân bố dữ liệu, statistics, cache và contention có tương đương không? |
+
+Không kết luận index thành công chỉ vì plan có chữ “Index”. Bàn giao query, điều kiện đo, kế hoạch trước/sau và chi phí ghi; đưa việc tạo index trên bảng thật sang kế hoạch migration theo engine để xét lock và tương thích.

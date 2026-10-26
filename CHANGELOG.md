@@ -1,5 +1,12 @@
 # Changelog
 
+## Bổ sung chiều sâu nội dung — 2026-10-26
+
+- Thêm ví dụ xử lý cụ thể cho cả 23 chuyên môn: dữ kiện cần đọc, cách chọn phương án, lỗi dễ gặp và cách kiểm lại.
+- Rút quy tắc chung lặp trong entrypoint; chỉ dẫn rõ tình huống nào nên mở runbook. Không thêm bước quản lý hay công cụ cài đặt.
+- Giữ một LICENSE gốc trong repo; script chép kèm vào bản cài, giữ license riêng nếu skill có. Khi chép/chia sẻ bằng tay cần mang theo license.
+- Kiểm bản cài có nội dung license đúng; thiếu license nguồn thì dừng trước khi thay bản đã cài.
+
 ## Bản dùng cá nhân — 2026-10-26
 
 - Giữ 23 skill chuyên môn, mỗi skill có hướng dẫn và runbook tự chứa.

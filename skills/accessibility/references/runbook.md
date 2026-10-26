@@ -19,18 +19,26 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Visual/reflow | Chọn tiêu chuẩn áp dụng, phân loại text/UI cho contrast; kiểm zoom/reflow/reduced motion. | Số đo hoặc ảnh ở điều kiện cụ thể, không badge chứng nhận. |
 | Tool coverage | Kết hợp scanner và manual; ghi assistive tech nào chưa chạy. | Tool/version, findings, manual coverage và residual limitations. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Audit scope: tiêu chuẩn, component, browser/assistive tech.
 - Findings: tác động người dùng, reproduction và remediation.
 - Evidence: automated/manual tách riêng, phần chưa thử.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Không có điều kiện kiểm tra một tiêu chí bắt buộc; không suy scanner pass thành chứng nhận accessibility toàn diện. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Không có điều kiện kiểm tra một tiêu chí bắt buộc; không suy scanner pass thành chứng nhận accessibility toàn diện. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ kiểm thủ công: dialog xác nhận xóa
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Đi theo thao tác người dùng bằng bàn phím, rồi đối chiếu name/role/state của dialog và nút. Không bắt đầu bằng thêm ARIA khi semantic HTML hoặc component sẵn có đã hỗ trợ đúng.
+
+1. Focus nút mở và kích hoạt bằng bàn phím. Khi dialog xuất hiện, xác định điểm focus ban đầu phù hợp với nội dung và mức nguy hiểm của hành động.
+2. Di chuyển bằng Tab/Shift+Tab. Với modal, focus không đi vào nội dung nền không tương tác; vòng di chuyển vẫn có cách hủy/đóng theo thiết kế.
+3. Kiểm tên dialog, nội dung xác nhận và nhãn nút trong accessibility tree; nếu có screen reader thì thử luồng trên công nghệ hỗ trợ được chỉ định.
+4. Hủy dialog và kiểm focus quay về vị trí hợp lý. Nếu xác nhận xóa làm nút mở biến mất, phải có đích focus còn tồn tại, không đặt vào node đã bị gỡ.
+5. Làm nội dung dài và zoom theo phạm vi hỗ trợ; vẫn tiếp cận được nội dung và thao tác, focus nhìn thấy được.
+
+Lỗi “focus rơi về đầu trang sau xóa” cần kèm bước tái hiện, browser/assistive tech đã dùng và tác động cho người chỉ dùng bàn phím. Scanner có thể không phát hiện đầy đủ chuỗi tương tác này.
+
+Nếu chưa có screen reader, ghi đã kiểm bàn phím/tree và chưa kiểm trải nghiệm đọc thực. Không suy một dialog đạt thành toàn ứng dụng đạt tiêu chuẩn; mỗi kết luận gắn với phạm vi và tiêu chí đã đối chiếu.

@@ -19,18 +19,28 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | Responsive và nội dung dài | Chọn ưu tiên nội dung, wrapping, overflow có chủ đích và hành vi zoom. | Spec ở viewport mục tiêu cùng dữ liệu dài. |
 | Hiệu ứng chuyển động | Có reduced-motion và tránh làm mất nội dung hoặc focus. | Thông số tương tác và cách đối chiếu trên bản chạy. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - UX flow: mục tiêu, nhánh lỗi/hủy/retry.
 - Component spec: tokens, states, responsive và nội dung dài.
 - Handoff: ví dụ có dữ liệu đại diện và tiêu chí đối chiếu.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Thiếu quyết định sản phẩm chặn luồng; token đề xuất không khả thi; hoặc chưa được phép đổi ngôn ngữ thiết kế toàn hệ thống. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Thiếu quyết định sản phẩm chặn luồng; token đề xuất không khả thi; hoặc chưa được phép đổi ngôn ngữ thiết kế toàn hệ thống. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ đặc tả: hộp thoại xóa một tài liệu
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+Trước khi vẽ, xác định thao tác có đảo ngược được không, tài liệu có đang được dùng chung không, và UI có cần giải thích tác động cho người dùng. Dùng token, kiểu dialog và cách viết thông báo hiện có.
+
+| Trạng thái | Nội dung và tương tác cần xác định |
+| --- | --- |
+| Mở xác nhận | Tên tài liệu, tác động xóa, nút hủy và nút xác nhận có nhãn rõ. |
+| Đang gửi | Hiển thị tiến độ phù hợp, tránh gửi lặp; quy định việc đóng dialog trong lúc chờ. |
+| Xóa thành công | Đóng dialog và cập nhật danh sách; đặt focus vào vị trí còn tồn tại, hợp lý. |
+| Bị từ chối hoặc đang có người sử dụng | Giải thích nguyên nhân từ server, giữ ngữ cảnh để người dùng chọn bước tiếp. |
+| Mất mạng, chưa biết kết quả | Không khẳng định chưa xóa; cho kiểm tra lại trạng thái trước khi thử lại. |
+
+Nếu đóng dialog không hủy được request phía server, không đặt tên thao tác đó là “hủy xóa”. Nội dung dài cần wrap mà vẫn giữ được tên tài liệu và nút hành động trong viewport mục tiêu.
+
+Bàn giao gồm state table, nội dung thông báo, vị trí focus khi mở/đóng và cách bố trí trên màn hình nhỏ. Một ảnh trạng thái mặc định chưa mô tả đủ tương tác để frontend triển khai.

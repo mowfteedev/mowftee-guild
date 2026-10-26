@@ -19,18 +19,27 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 | CI supply chain | Giảm token permissions; pin action/dependency theo policy và verify upstream SHA. | Workflow diff, nguồn SHA và run result. |
 | Rollout | Readiness/drain/rollback theo behavior thật; không coi rolling là bảo đảm zero downtime. | Runbook, health signals, điểm dừng và owner. |
 
-## Hợp đồng đầu ra khi bàn giao
+## Đầu ra cần giữ khi liên quan
 
 - Infrastructure diff: build, network, secrets, health và permissions.
 - CI evidence: checks, artifact ID/digest và môi trường.
 - Operations handoff: deploy/rollback, prerequisite và hạn chế.
 
-Hồ sơ đủ lớn để lưu cần snapshot/commit hoặc dirty state, môi trường, command/thao tác, exit code khi có và artifact đã che dữ liệu nhạy cảm. Với việc nhỏ, hội thoại có thể đủ; không tự tạo hồ sơ ngoài quyền ghi.
-
 ## Điều kiện dừng phần phụ thuộc
 
-Thiếu quyền hạ tầng, secret bootstrap hoặc có destructive change chưa có phương án phục hồi được chấp nhận. Vẫn tiếp tục phần độc lập được phép. Ghi NOT_RUN/BLOCKED và owner bước tiếp theo, không tự đổi thành PASS.
+Thiếu quyền hạ tầng, secret bootstrap hoặc có destructive change chưa có phương án phục hồi được chấp nhận. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
-## Kiểm tra lại sau sửa
+## Ví dụ chẩn đoán: chạy được trên host, lỗi trong container
 
-Kiểm lại tiêu chí lỗi và regression trong vùng ảnh hưởng. Khi snapshot, dữ liệu hoặc cấu hình tác động kết luận thay đổi, đánh giá lại evidence cũ. Nếu không tiến bộ, đổi cách tiếp cận và báo rõ điểm nghẽn; không bỏ yêu cầu để làm đẹp kết quả.
+App trong container không kết nối được DB là một chuỗi điều kiện, không phải lý do để công khai cổng DB ngay. Đọc topology, cấu hình đã che secret và log lỗi trước.
+
+| Dấu hiệu | Điều nên kiểm |
+| --- | --- |
+| Không resolve hostname | Tên service/DNS và network mà app thực sự tham gia. |
+| Connection refused | Địa chỉ/port bên trong network, tiến trình DB và thứ tự sẵn sàng; `localhost` thường chỉ chính container hiện tại. |
+| Authentication failed | App, DB và healthcheck có cùng nguồn cấu hình/credentials dự kiến không; không in mật khẩu để so. |
+| App khỏe nhưng không gọi được dịch vụ ngoài | DNS/egress/proxy theo topology, không mở thêm inbound chỉ để chữa outbound. |
+
+Thử kết nối từ cùng network/context của app bằng công cụ đã có hoặc môi trường tạm được phép. `healthy` của DB không chứng minh tài khoản app có quyền hay schema đã sẵn sàng.
+
+Với bản sửa cấu hình, kiểm parse/build, khởi động sạch trong môi trường thử và một thao tác app cần DB. Ghi rõ volume nào tồn tại qua lần khởi động; lệnh reset/xóa volume không được đưa vào quickstart như một bước sửa lỗi vô hại. Thay đổi production chỉ thực thi trong phạm vi người dùng đã cấp.
