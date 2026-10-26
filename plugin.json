@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mowftee-guild",
+  "version": "0.1.0",
+  "description": "24 skill tiếng Việt để phân tích, triển khai, debug có bằng chứng, kiểm thử và vận hành dự án cá nhân.",
+  "author": {
+    "name": "mowfteedev",
+    "url": "https://github.com/mowfteedev"
+  },
+  "homepage": "https://github.com/mowfteedev/mowftee-guild",
+  "repository": "https://github.com/mowfteedev/mowftee-guild",
+  "license": "MIT",
+  "keywords": ["vietnamese", "skills", "debugging", "development"],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Mowftee Guild",
+        "shortDescription": "24 skill tiếng Việt",
+        "longDescription": "Bộ kỹ năng dùng với một trợ lý: chọn chuyên môn theo đầu việc, sửa lỗi từ nguyên nhân có bằng chứng và báo đúng phạm vi đã kiểm. Nội dung Markdown và runbook được dùng trực tiếp từ skills/.",
+        "developerName": "mowfteedev",
+        "category": "Developer Tools",
+        "capabilities": ["Phân tích và triển khai", "Debug có bằng chứng", "Kiểm thử và review", "Vận hành và tài liệu"]
+      }
+    }
+  }
+}

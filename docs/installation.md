@@ -1,5 +1,7 @@
 # Cài, cập nhật và gỡ
 
+Trang này mô tả cách chép skill trực tiếp bằng Bash. Nếu muốn dùng plugin, xem [hướng dẫn plugin cho Codex và Antigravity](plugins.md); chọn một cách cài cho mỗi công cụ.
+
 ## Lấy đúng bản repo
 
 Bản hiện tại ở nhánh `feat/guild-v2-specialized-skills`; `main` vẫn dùng script cũ. Với bản clone mới:

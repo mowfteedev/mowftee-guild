@@ -24,5 +24,6 @@ Các repo tổng hợp có thể có nguồn trùng nhau; không coi số repo l
 - [OpenAI Docs: Plugin skills](https://developers.openai.com/plugins/build/skills): ranh giới skill và plugin, reference theo nhu cầu.
 - [OpenAI Docs: Plugin architecture](https://developers.openai.com/plugins/concepts/plugins) và [Package your plugin](https://developers.openai.com/plugins/build/plugins): đối chiếu tài liệu giới thiệu plugin, dạng chỉ có skill, manifest portable và định dạng tương thích.
 - [Google Antigravity Docs: Agent skills](https://antigravity.google/docs/skills): App/IDE/CLI paths và cách gọi theo host.
+- [Google Antigravity Docs: Plugins](https://www.antigravity.google/docs/plugins?tab=cli): manifest và cách cài, bật/tắt, gỡ bằng CLI. Đã đối chiếu thêm với `agy plugin` 1.4.7 tại máy thử.
 
 Các đường dẫn và cách gọi là thông tin host có thể đổi theo phiên bản. Cần đối chiếu lại tài liệu chính thức trước khi thay cơ chế cài hoặc làm plugin/MCP.

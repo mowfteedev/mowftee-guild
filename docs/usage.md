@@ -33,6 +33,8 @@ Nếu chưa tái hiện hoặc chưa chạy được, ghi rõ giới hạn thay 
 
 Trong Antigravity App dùng slash command, ví dụ `/frontend`, thay cho `$frontend`. Host cũng có thể chọn skill theo mô tả. [Danh mục skill](skills-catalog.md) giúp chọn vai trò khi cần.
 
+Các ví dụ `$tên-skill` ở trên dành cho bản chép trực tiếp. Với plugin Codex, dùng tiền tố `mowftee-guild:`, chẳng hạn `$mowftee-guild:systematic-debugging`, hoặc chọn đúng mục của plugin trong `/skills`. Xem [cài và dùng plugin](plugins.md).
+
 ## Tài liệu tùy chọn
 
 Runbook nằm cùng từng skill, chỉ đọc phần liên quan. Chọn một [workflow](../workflows/README.md) theo đầu việc; với sửa lỗi, giữ bốn bước kiểm chứng và báo phần chưa kiểm được. Khi cần lưu kết quả, chọn một [mẫu ghi chú](../templates/memory/README.md) và điền phần hữu ích. Có thể trả kết quả ngay trong hội thoại cho tác vụ nhỏ.

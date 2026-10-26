@@ -1,5 +1,12 @@
 # Changelog
 
+## Plugin 0.1.0 — 2026-10-26
+
+- Thêm manifest Agent Plugins và mục đăng ký Codex, dùng chung 24 skill từ `skills/`.
+- Kiểm tra cài, khám phá skill, bật/tắt và gỡ bằng Codex CLI 0.164.0 và Antigravity CLI 1.4.7. Codex dùng tên có namespace `mowftee-guild:<skill>`.
+- Thêm script đóng gói ZIP bằng Python standard library, hai test payload và artifact ZIP trên GitHub Actions. Python chỉ dùng khi phát triển/đóng gói, không phải dependency cài plugin.
+- Hoàn thiện hướng dẫn cài, cập nhật, chuyển từ bản skill rời và gỡ gói. Các workflow/mẫu ghi chú vẫn ở bản clone, không được đăng ký thêm thành skill.
+
 ## Thống nhất repo và hướng dẫn sử dụng — 2026-10-26
 
 - Sửa quickstart để clone đúng nhánh review đang chứa 24 skill, tránh chạy script cũ từ `main`.

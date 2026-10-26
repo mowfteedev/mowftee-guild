@@ -1,0 +1,20 @@
+{
+  "name": "mowftee-guild-marketplace",
+  "interface": {
+    "displayName": "Mowftee Guild"
+  },
+  "plugins": [
+    {
+      "name": "mowftee-guild",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

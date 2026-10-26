@@ -18,6 +18,11 @@ Kiểm tra khi sửa script cài/gỡ:
 ```bash
 bash -n setup.sh
 python3 -m unittest discover -s tests -v
+python3 scripts/package_plugin.py
 ```
 
-Tests chỉ chép/xóa trong HOME tạm. Python là công cụ chạy test, không phải dependency cài skill. Sau khi chỉnh Markdown, cài lại bằng `./setup.sh install codex` hoặc tên host đang dùng.
+Tests chỉ chép/xóa trong HOME tạm và kiểm gói ZIP. Python là công cụ chạy test/đóng gói, không phải dependency cài skill hoặc plugin.
+
+Khi đổi plugin, giữ danh tính `mowftee-guild`, tăng phiên bản trong `plugin.json` khi phát hành bản mới và cập nhật ví dụ tên ZIP trong tài liệu. Không tạo bản sao thứ hai của `skills/`; script đóng gói lấy nội dung trực tiếp từ đó. Kiểm cài/gỡ bằng host trong profile tạm trước khi thay bản đang dùng. Xem [hướng dẫn plugin](docs/plugins.md).
+
+Sau khi chỉnh Markdown, cập nhật bằng đúng cách đã cài: plugin thì gỡ/cài lại gói theo hướng dẫn; bản chép trực tiếp thì chạy lại `./setup.sh install codex` hoặc tên host đang dùng.

@@ -11,4 +11,4 @@ Ví dụ: `./setup.sh install codex`. Cài lại để cập nhật; không cầ
 
 Nếu đã copy/cài bằng script cũ, thư mục skill có thể chưa có tệp nhận biết `.mowftee-guild`. Script mới giữ nguyên bản đó và báo trùng tên. Tự xem lại, giữ nội dung tùy chỉnh cần thiết rồi bỏ hoặc đổi tên bản cũ trước khi cài. Metadata của bộ quản lý cũ, nếu có, không còn được đọc hay sửa bởi script này.
 
-Không có plugin/MCP hoặc bước phát hành tự động trong lần rút gọn này.
+Lần rút gọn ban đầu chỉ chép/gỡ skill. Bản hiện tại bổ sung [plugin 0.1.0](plugins.md) dùng chung nội dung, có thể cài qua host; cách cài Bash vẫn giữ nguyên. Không cần MCP server cho bộ skill này.
