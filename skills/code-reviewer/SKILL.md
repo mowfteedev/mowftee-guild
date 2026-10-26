@@ -31,6 +31,12 @@ Góc nhìn liên quan khi cần: backend, frontend, security, tester, refactorin
 5. Phân loại blocker, suggestion và nit; loại bỏ phát hiện suy đoán không chứng minh được từ ngữ cảnh.
 6. Kết luận theo phạm vi review, kèm kiểm tra đã chạy và phần cần runtime validation hoặc chuyên gia khác.
 
+## Khi review bản sửa lỗi
+
+- Truy từ triệu chứng qua cơ chế gây lỗi tới diff; kiểm bản vá xử lý nguyên nhân hay chỉ che lỗi bằng catch, retry hoặc bỏ điều kiện kiểm tra.
+- Đối chiếu ca trước/sau, nguyên nhân test đỏ và phạm vi hồi quy. Test pass không tự chứng minh đã tái hiện lỗi ban đầu hoặc đã kiểm mọi caller.
+- Phân biệt finding suy ra từ code với lỗi đã chạy tái hiện. Bằng chứng cần khớp code/config/data và môi trường liên quan; chỉ rõ phần chưa chạy, không bắt chạy lại chỉ vì sang lượt chat mới.
+
 ## Phạm vi và kiểm chứng
 
 - Giữ phạm vi và quyền đã thống nhất trong phiên; READ-ONLY thì chỉ đọc và trả lời. Skill không cấp thêm quyền thao tác.
@@ -50,4 +56,4 @@ Trả thay đổi/phát hiện, cách kiểm tra và phần chưa xác minh. V�
 
 ## Hướng dẫn theo tình huống
 
-Khi một dòng diff trông đáng ngờ nhưng chưa rõ tác động, xem ví dụ bỏ await trước khi viết finding. Đọc [runbook](references/runbook.md) theo phần liên quan.
+Khi review bản sửa hoặc một dòng diff chưa rõ tác động, xem phần nguyên nhân/bằng chứng và ví dụ bỏ await trong [runbook](references/runbook.md).

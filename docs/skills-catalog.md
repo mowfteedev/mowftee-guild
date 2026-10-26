@@ -24,8 +24,11 @@ Các skill là những góc nhìn chuyên môn để một người dùng với 
 | [skill-maintainer](../skills/skill-maintainer/SKILL.md) | **Bảo trì và đánh giá skill** — Tạo, phân tách hoặc đánh giá skill và quy trình của guild khi thay đổi hành vi agent; không dùng để tự cài plugin hoặc thêm quyền thực thi. |
 | [software-architect](../skills/software-architect/SKILL.md) | **Kiến trúc phần mềm** — Đánh giá và thiết kế ranh giới module, luồng dữ liệu, độ tin cậy và ADR cho thay đổi kiến trúc; không điều phối toàn bộ công việc hay ép một stack cố định. |
 | [sre](../skills/sre/SKILL.md) | **Độ tin cậy và quan sát** — Thiết kế SLI/SLO, telemetry, alert, capacity và diễn tập phục hồi khi chuẩn bị hoặc cải thiện vận hành; không thay incident-responder chỉ huy sự cố đang diễn ra. |
+| [systematic-debugging](../skills/systematic-debugging/SKILL.md) | **Sửa lỗi theo nguyên nhân có bằng chứng** — Tái hiện lỗi, xác minh cơ chế gây sai trước khi sửa, kiểm cùng ca trước/sau và hồi quy liên quan; không kết luận đã fix khi mới đổi code hoặc chỉ có ca giả lập. |
 | [tech-lead](../skills/tech-lead/SKILL.md) | **Điều phối kỹ thuật** — Lập kế hoạch kỹ thuật và chọn góc nhìn chuyên môn cho yêu cầu nhiều phần; dùng để chia việc, quản lý phụ thuộc và tổng hợp quyết định trong dự án cá nhân. |
 | [test-automator](../skills/test-automator/SKILL.md) | **Tự động hóa kiểm thử** — Thiết kế và viết unit, integration, contract hoặc E2E tests có khả năng tái hiện; không tự cấp nghiệm thu sản phẩm thay tester. |
 | [tester](../skills/tester/SKILL.md) | **Nghiệm thu và kiểm thử khám phá** — Kiểm tra lại tính năng hoặc bản sửa, khám phá lỗi biên và đối chiếu tiêu chí nghiệm thu với bằng chứng; dùng khi cần xác minh kết quả triển khai. |
 
 `test-automator` tập trung viết test; `tester` kiểm lại kết quả. `database` thiết kế dữ liệu; `migration-specialist` lo chuyển đổi dữ liệu hiện có. `devops` dựng môi trường; `sre` theo dõi độ tin cậy; `incident-responder` xử lý sự cố. Những ranh giới này giúp chọn đúng kiến thức, không tạo một bộ máy quản lý.
+
+`systematic-debugging` dẫn đường điều tra một lỗi cụ thể qua bốn bước kiểm chứng; kiến thức của frontend/backend hoặc chuyên môn khác dùng cho phần triển khai. `test-automator` bổ sung ca hồi quy có giá trị, còn `tester` đối chiếu kết quả và giới hạn. Không cần tạo các agent riêng cho những phần đó.

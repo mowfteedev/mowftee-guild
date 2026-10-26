@@ -1,6 +1,6 @@
 # ⚔️ mowftee-guild
 
-Bộ **23 skill tiếng Việt** để dùng với Codex hoặc Google Antigravity. Mỗi skill là hướng dẫn Markdown theo một chuyên môn: lập kế hoạch, giao diện, backend, dữ liệu, kiểm thử, vận hành… Một trợ lý có thể lần lượt dùng các góc nhìn đó; không cần dựng đội agent hay hệ thống quản lý riêng.
+Bộ **24 skill tiếng Việt** để dùng với Codex hoặc Google Antigravity. Mỗi skill là hướng dẫn Markdown theo một chuyên môn: lập kế hoạch, giao diện, backend, dữ liệu, sửa lỗi, kiểm thử, vận hành… Một trợ lý có thể lần lượt dùng các góc nhìn đó; không cần dựng đội agent hay hệ thống quản lý riêng.
 
 ## Cài và gỡ
 
@@ -26,13 +26,13 @@ Antigravity CLI dùng `./setup.sh install antigravity-cli` và `./setup.sh unins
 Trong Codex, gọi như `$backend`, `$frontend`, `$tester` hoặc chọn từ `/skills`. Trong Antigravity App, gọi như `/backend`. Ví dụ:
 
 ```text
-Dùng $backend để sửa lỗi tạo đơn hàng bị lặp khi gửi lại request.
-Đọc code hiện tại, sửa trong phạm vi liên quan và kiểm tra lại kết quả.
+Dùng $systematic-debugging để sửa lỗi tạo đơn hàng bị lặp khi gửi lại request.
+Tái hiện trước, xác minh nguyên nhân, sửa tối thiểu rồi kiểm lại cùng ca và hồi quy liên quan.
 ```
 
-Chỉ gọi skill phù hợp đầu việc. Không bắt buộc chạy đủ quy trình, tạo báo cáo hay có người duyệt khác. Skill vẫn cần làm rõ điều chưa biết, kiểm chứng kết quả thật và tôn trọng phạm vi anh đã yêu cầu.
+Chỉ gọi skill phù hợp đầu việc; không cần gọi đủ vai trò, tạo báo cáo hay có người duyệt khác. Khi sửa lỗi, giữ [bốn bước kiểm chứng](workflows/04-sua-loi.md) và báo rõ phần chưa làm được. Bằng chứng cần khớp với phiên bản và điều kiện đang kiểm; không kết luận “đã fix” chỉ vì đã đổi code.
 
-👉 [Danh sách 23 skill và vai trò](docs/skills-catalog.md) · [Ví dụ sử dụng](docs/usage.md)
+👉 [Danh sách 24 skill và vai trò](docs/skills-catalog.md) · [Ví dụ sử dụng](docs/usage.md)
 
 ## Nội dung trong repo
 

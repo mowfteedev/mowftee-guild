@@ -6,7 +6,7 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 
 1. Không có lỗi trong phạm vi đã kiểm tra: báo đúng kết quả và giới hạn.
 2. Thiếu browser: không cấp PASS cho AC cần tương tác UI.
-3. Sửa lỗi ở commit mới: bằng chứng commit cũ không tự chuyển sang bản mới.
+3. Sửa lỗi ở commit mới: đối chiếu thay đổi với phạm vi bằng chứng cũ; kiểm lại phần có thể bị ảnh hưởng.
 4. Luồng thanh toán: kiểm chứng cả dữ liệu được ghi, không chỉ toast thành công.
 
 ## Ma trận quyết định chuyên môn
@@ -29,6 +29,17 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 
 Thiếu môi trường cho AC bắt buộc; không xác minh được snapshot; hoặc yêu cầu cấp chứng nhận khi chưa có evidence. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
+## Đối chiếu bằng chứng của bản sửa
+
+| Bằng chứng nhận được | Cần đối chiếu | Kết luận phù hợp |
+| --- | --- | --- |
+| “Test đã pass” | Command/thao tác, phiên bản, môi trường và output; test có chạm triệu chứng không? | Chưa đủ căn cứ nếu chỉ có lời tự báo. |
+| Cùng ca fail trước, pass sau | Lý do fail ban đầu và kỳ vọng giữ nguyên; điều kiện so sánh có khớp không? | Xác nhận ca đó được sửa; kiểm tiếp vùng ảnh hưởng trước kết luận rộng hơn. |
+| Test đỏ vì thiếu dependency rồi xanh sau cài dependency | Có quan sát được hành vi lỗi mục tiêu không? | Chưa chứng minh bản vá logic sửa lỗi mục tiêu. |
+| Ca giả lập pass, chưa tái hiện lỗi gốc | Giả lập bao phủ cơ chế nào, thiếu điều kiện nào so với báo cáo thật? | Chỉ kết luận trong phạm vi giả lập; lỗi gốc chưa được xác minh. |
+| CI từ lần trước | Có đúng commit/artifact, cấu hình, dữ liệu và phạm vi check đang đánh giá không? | Dùng được khi còn khớp; kiểm lại phần đã đổi liên quan. |
+
+Không đòi transcript toàn bộ hoặc chạy lại mọi test chỉ để có output ở lượt chat mới. Giữ phần output đủ để người đọc kiểm lại, exit code nếu có và link kết quả thật. Không lấy thời điểm mới chạy làm lý do chấp nhận một test không đúng hành vi.
 
 ## Tổng hợp kết luận nghiệm thu
 

@@ -29,7 +29,13 @@ Góc nhìn liên quan khi cần: product-analyst, test-automator, code-reviewer,
 3. Thử happy path, quyền truy cập, dữ liệu trống, nội dung biên, lỗi dependency và phục hồi theo rủi ro thực tế.
 4. Chỉ dùng payload phá hoại, tải lớn hoặc chaos trên môi trường cô lập được phép; chọn kích thước theo giới hạn sản phẩm.
 5. Với lỗi, cung cấp bước tái hiện, expected, actual, mức độ, vị trí và điều kiện xảy ra.
-6. Kết luận PASS, FAIL, BLOCKED hoặc NOT_RUN theo bằng chứng; yêu cầu kiểm tra lại sau sửa ở đúng snapshot.
+6. Kết luận PASS, FAIL, BLOCKED hoặc NOT_RUN theo bằng chứng khớp snapshot; kiểm lại khi code, cấu hình, dữ liệu hoặc môi trường liên quan đổi theo cách ảnh hưởng kết quả.
+
+## Kiểm một bản sửa lỗi
+
+- Đối chiếu triệu chứng, căn cứ nguyên nhân và kết quả cùng ca trên bản lỗi/bản sửa. Test đỏ vì môi trường không được tính là tái hiện triệu chứng.
+- Kiểm hồi quy theo vùng ảnh hưởng; một ca xanh không đủ để kết luận toàn bộ tính năng đạt. Thiếu tái hiện hoặc thiếu môi trường phải nằm trong kết luận.
+- Gắn command/thao tác, snapshot, môi trường và output quan trọng với kết quả; CI cần đúng commit/artifact. Không bắt chạy lại chỉ vì chuyển lượt chat nếu điều kiện liên quan vẫn khớp.
 
 ## Phạm vi và kiểm chứng
 
@@ -50,4 +56,4 @@ Trả thay đổi/phát hiện, cách kiểm tra và phần chưa xác minh. V�
 
 ## Hướng dẫn theo tình huống
 
-Khi lập phiên khám phá hoặc tổng hợp nghiệm thu thiếu môi trường, xem ca form địa chỉ và bảng trạng thái tiêu chí. Đọc [runbook](references/runbook.md) theo phần liên quan.
+Khi kiểm bản sửa, thiếu môi trường hoặc tổng hợp nghiệm thu, xem phần đối chiếu bằng chứng, ca form địa chỉ và bảng trạng thái tiêu chí trong [runbook](references/runbook.md).

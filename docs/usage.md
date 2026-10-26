@@ -24,11 +24,18 @@ Dùng $tester kiểm lại luồng vừa sửa.
 Cho biết đã thử gì, kết quả ra sao và phần nào chưa chạy được.
 ```
 
+```text
+Dùng $systematic-debugging điều tra lỗi này.
+Tái hiện bằng ca nhỏ nhất trước khi sửa; xác minh nguyên nhân bằng dữ kiện,
+sửa tối thiểu, chạy lại cùng ca rồi kiểm hồi quy trong vùng ảnh hưởng.
+Nếu chưa tái hiện hoặc chưa chạy được, ghi rõ giới hạn thay vì báo đã fix.
+```
+
 Trong Antigravity App dùng slash command, ví dụ `/frontend`, thay cho `$frontend`. Host cũng có thể chọn skill theo mô tả. [Danh mục skill](skills-catalog.md) giúp chọn vai trò khi cần.
 
 ## Tài liệu tùy chọn
 
-Runbook nằm cùng từng skill, chỉ đọc phần liên quan. Các workflow trong `workflows/` là gợi ý thứ tự làm; không phải cổng duyệt bắt buộc. Nếu muốn lưu thông tin dài hạn, copy mẫu từ `templates/memory/` vào dự án và điền tay; không cần tạo đủ bộ mỗi lần.
+Runbook nằm cùng từng skill, chỉ đọc phần liên quan. Chọn workflow trong `workflows/` theo đầu việc; với sửa lỗi, giữ bốn bước trong [workflow sửa lỗi](../workflows/04-sua-loi.md) và báo phần chưa kiểm được. Không có cổng duyệt hoặc hồ sơ bắt buộc. Nếu muốn lưu thông tin dài hạn, copy mẫu từ `templates/memory/` vào dự án và điền tay; không cần tạo đủ bộ mỗi lần.
 
 ## Skill và plugin
 

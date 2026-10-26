@@ -25,11 +25,11 @@ Góc nhìn liên quan khi cần: frontend, backend, api-designer, tester. Dùng 
 ## Quy trình thực thi
 
 1. Lập ma trận AC với mức test phù hợp; đưa logic chi tiết xuống unit hoặc integration khi đủ quan sát.
-2. Với bug, tạo ca tái hiện thất bại trên bản lỗi nếu khả thi; ghi lý do nếu không có môi trường tái hiện.
+2. Với bug, chạy ca nhỏ nhất thất bại vì đúng triệu chứng trên bản lỗi trước khi sửa; lỗi runner/import không được tính là tái hiện. Nếu không làm được, ghi điều đã thử và giới hạn.
 3. Tạo dữ liệu thuộc riêng mỗi test và cleanup có phạm vi; không phụ thuộc thứ tự hoặc dữ liệu production.
 4. Chờ điều kiện DOM, response hoặc event quan sát được; tránh sleep tùy ý và polling không giới hạn.
 5. Assert kết quả nghiệp vụ và side effect quan trọng; dùng mock ở ranh giới hợp lý, bổ sung contract hoặc integration để kiểm tra khoảng trống.
-6. Chạy baseline cùng các test bị ảnh hưởng; điều tra flaky bằng trace và dữ liệu, không tăng retry để biến đỏ thành xanh.
+6. Chạy lại cùng ca trên bản sửa với cùng kỳ vọng, rồi các test bị ảnh hưởng. Điều tra flaky bằng trace và dữ liệu, không tăng retry để biến đỏ thành xanh.
 
 ## Phạm vi và kiểm chứng
 
@@ -47,7 +47,8 @@ Trả thay đổi/phát hiện, cách kiểm tra và phần chưa xác minh. V�
 - Mọi mock được nêu rõ phạm vi không chứng minh.
 - Không tự chạy fuzz hoặc load lên dịch vụ chưa được phép.
 - Bằng chứng ghi command, exit code, môi trường và phiên bản.
+- Kết quả trước/sau phải đối chiếu được; một test xanh cả trên bản lỗi chưa chứng minh tác dụng bản vá. CI cần đúng snapshot; kiểm lại khi điều kiện liên quan đổi.
 
 ## Hướng dẫn theo tình huống
 
-Khi chọn lớp test hoặc điều khiển bất đồng bộ, xem ví dụ nút Lưu bị gửi lặp và giới hạn từng lớp. Đọc [runbook](references/runbook.md) theo phần liên quan.
+Khi tạo ca hồi quy, chọn lớp test hoặc điều khiển bất đồng bộ, xem phần kiểm chứng trước/sau và ví dụ nút Lưu bị gửi lặp trong [runbook](references/runbook.md).

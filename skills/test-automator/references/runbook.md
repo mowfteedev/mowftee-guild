@@ -29,6 +29,14 @@ Các tình huống dưới đây là gợi ý kiểm chứng, không phải yêu
 
 Test yêu cầu môi trường không được phép, payload có thể gây hại hoặc kết quả không thể tái lập do thiếu dữ liệu quan trọng. Tiếp tục phần độc lập; nêu rõ điểm bị chặn.
 
+## Kiểm chứng ca hồi quy trước và sau bản sửa
+
+- Giữ input và kỳ vọng từ hành vi đã thống nhất. Chạy trên bản lỗi để kiểm assertion thất bại vì triệu chứng, rồi chạy cùng ca trên bản sửa; lưu phần output quan trọng và exit code của từng lần.
+- Nếu test xanh ngay trên bản lỗi, xem test có đi qua đúng nhánh, mock có che cơ chế lỗi, hoặc assertion có chỉ kiểm chi tiết không liên quan. Chỉnh ca để đo đúng hành vi; không tự tạo lỗi khác nhằm có một lần đỏ.
+- Nếu không có baseline hoặc môi trường cần thiết, ghi rõ. Không ghi đè thay đổi đang có để lấy bản lỗi và không đưa một ca giả lập thành bằng chứng đã tái hiện lỗi gốc.
+- Chạy tiếp các kiểm tra caller, nhánh lỗi và dữ liệu bị ảnh hưởng. Một lần xanh chưa loại trừ flaky; không bỏ các lần đỏ khỏi báo cáo hoặc tăng retry để che chúng.
+- Kết quả CI dùng được khi đúng commit/artifact, môi trường và phạm vi kiểm tra liên quan. Sau thay đổi có thể tác động kết luận, chạy lại phần bị ảnh hưởng; không bắt chạy mọi test ở mỗi lượt chat.
+
 ## Ví dụ chọn test: nút “Lưu” bị gửi lặp
 
 Tách hai yêu cầu: UI phản hồi đúng khi click nhanh, và server không tạo hai bản ghi nếu request bị gửi lại. Hai yêu cầu cần quan sát khác nhau.

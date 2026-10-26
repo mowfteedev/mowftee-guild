@@ -1,5 +1,12 @@
 # Changelog
 
+## Sửa lỗi có bằng chứng — 2026-10-26
+
+- Thêm skill `systematic-debugging`, đưa tổng số lên 24; chỉ dẫn bốn bước: tái hiện, xác minh nguyên nhân, sửa tối thiểu và kiểm cùng ca, hồi quy liên quan.
+- Viết lại workflow sửa lỗi; không tính lỗi môi trường là tái hiện triệu chứng và không dùng ca giả lập để tuyên bố đã xác minh lỗi gốc.
+- Thống nhất tester, code-reviewer và test-automator về bằng chứng trước/sau, snapshot và giới hạn kết luận. CI đúng phiên bản dùng được; không bắt chạy lại test ở mọi lượt chat.
+- Giữ phần cài/gỡ như hiện tại; thay đổi trong đợt này là nội dung Markdown.
+
 ## Bổ sung chiều sâu nội dung — 2026-10-26
 
 - Thêm ví dụ xử lý cụ thể cho cả 23 chuyên môn: dữ kiện cần đọc, cách chọn phương án, lỗi dễ gặp và cách kiểm lại.

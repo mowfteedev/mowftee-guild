@@ -6,7 +6,7 @@ Ngày kiểm tra: 26/10/2026, local Linux. Phạm vi: script Bash chép/gỡ và
 | --- | --- |
 | `bash -n setup.sh` | Hợp lệ |
 | `python3 -m unittest discover -s tests -v` | 11 tests, OK |
-| Validator định dạng từ skill-creator | 23/23 SKILL.md hợp lệ |
+| Validator định dạng từ skill-creator | 24/24 SKILL.md hợp lệ |
 | Liên kết file trong Markdown | Không có link file bị hỏng trong lần kiểm tra |
 | `git diff --check` | Không có lỗi whitespace được phát hiện |
 
@@ -19,3 +19,5 @@ Python chỉ phục vụ test phát triển. Người dùng cài/gỡ chỉ cầ
 Đây là tự kiểm của người triển khai. Chất lượng nội dung cần tiếp tục thử bằng yêu cầu thật trên host; repo không tuyên bố đã benchmark độc lập hoặc chứng nhận hành vi agent.
 
 Đợt bổ sung chiều sâu đã đọc lại entrypoint/runbook của 23 skill, rút phần hướng dẫn chung lặp và thêm ví dụ riêng cho từng vai trò. Ví dụ nêu dữ kiện cần xem, cách chọn phương án và cách kiểm kết quả; đây là minh họa chuyên môn, chưa phải transcript thực thi hay kết quả đánh giá hành vi.
+
+Đợt sửa lỗi có bằng chứng thêm `systematic-debugging`, đưa bộ skill lên 24 và đồng bộ workflow, tester, code-reviewer, test-automator. Đã kiểm định dạng 24 skill, liên kết file và chạy lại 11 test cài/gỡ với bộ skill hiện tại. Việc đọc lại hướng dẫn trước/sau và giới hạn kết luận là tự rà nội dung; chưa phải thử hành vi trên một yêu cầu debug thực tế.
