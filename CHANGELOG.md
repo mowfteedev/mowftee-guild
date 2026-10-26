@@ -1,5 +1,10 @@
 # Changelog
 
+## Đưa bản đã duyệt vào main — 2026-10-26
+
+- Đưa bộ 24 skill và plugin 0.1.0 vào nhánh chính theo yêu cầu người dùng.
+- Cập nhật hướng dẫn clone/cài về `main`; giữ nội dung gói plugin đã kiểm thử.
+
 ## Plugin 0.1.0 — 2026-10-26
 
 - Thêm manifest Agent Plugins và mục đăng ký Codex, dùng chung 24 skill từ `skills/`.

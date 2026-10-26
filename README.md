@@ -4,10 +4,10 @@ Bộ **24 skill tiếng Việt** để dùng với Codex hoặc Google Antigravi
 
 ## Lấy repo
 
-Bản 24 skill hiện ở nhánh `feat/guild-v2-specialized-skills`; `main` vẫn là bản cũ. Clone đúng nhánh để dùng các lệnh dưới đây:
+Bản chính trên `main` gồm 24 skill và plugin dùng với Codex/Antigravity. Clone repo để bắt đầu:
 
 ```bash
-git clone --branch feat/guild-v2-specialized-skills --single-branch https://github.com/mowfteedev/mowftee-guild.git
+git clone https://github.com/mowfteedev/mowftee-guild.git
 cd mowftee-guild
 ```
 

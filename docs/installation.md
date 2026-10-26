@@ -4,14 +4,14 @@ Trang này mô tả cách chép skill trực tiếp bằng Bash. Nếu muốn d�
 
 ## Lấy đúng bản repo
 
-Bản hiện tại ở nhánh `feat/guild-v2-specialized-skills`; `main` vẫn dùng script cũ. Với bản clone mới:
+Bản hiện tại nằm trên nhánh chính `main`. Với bản clone mới:
 
 ```bash
-git clone --branch feat/guild-v2-specialized-skills --single-branch https://github.com/mowfteedev/mowftee-guild.git
+git clone https://github.com/mowfteedev/mowftee-guild.git
 cd mowftee-guild
 ```
 
-Nếu đã có bản clone, kiểm nhánh bằng `git branch --show-current` và giữ các thay đổi riêng trước khi chuyển sang nhánh review. Không cần clone lại nếu đang ở đúng nhánh.
+Nếu đã có bản clone, kiểm nhánh bằng `git branch --show-current` và giữ các thay đổi riêng trước khi chuyển sang `main`. Không cần clone lại nếu đang ở đúng nhánh.
 
 ## Cách dùng
 

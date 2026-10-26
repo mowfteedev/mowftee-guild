@@ -23,7 +23,7 @@ Python chỉ phục vụ test và tạo ZIP. Người dùng cài plugin cần CL
 
 ## Các điểm đã đối chiếu trong đợt tối ưu
 
-- Quickstart cũ clone `main`. Đã thử `./setup.sh install codex` trên snapshot `15d7332` của `origin/main`: exit code 0 nhưng chép 10 skill vào Antigravity, không có bản Codex mong đợi. Hướng dẫn hiện chỉ rõ nhánh review chứa 24 skill.
+- Quickstart cũ từng clone bản `main` ở snapshot `15d7332`: thử `./setup.sh install codex` trả exit code 0 nhưng chép 10 skill vào Antigravity, không có bản Codex mong đợi. Bản 24 skill/plugin nay được đưa vào `main`, và hướng dẫn clone đã trở về nhánh chính.
 - Quy tắc loại lỗi import/runner đã được tự rà lại theo hai tình huống: nó là triệu chứng mục tiêu, hoặc là lỗi khác chặn ca kiểm tra. Việc đối chiếu này là rà nội dung, chưa phải chạy yêu cầu debug qua model độc lập.
 - Workflow và mẫu ghi chú có mục lục cùng liên kết tới file hiện có. Mẫu kết quả chưa điền số đo/PASS; mục người nhận chỉ dùng khi có nhu cầu thật.
 - Plugin 0.1.0 có manifest thật và gói ZIP đã thử. Kiểm profile làm việc sau cài cho thấy 24 skill được bật trên Codex và Antigravity liệt kê đủ 24 skill; nội dung bản cài được đối chiếu với ZIP.

@@ -14,7 +14,7 @@ Plugin có thể chỉ chứa skill; MCP là phần thêm khi công việc cần
 
 ## Cài trên Codex
 
-Trong thư mục repo đã clone đúng nhánh review, hoặc thư mục đã giải nén gói ZIP:
+Trong thư mục repo đã clone nhánh `main`, hoặc thư mục đã giải nén gói ZIP:
 
 ```bash
 codex plugin marketplace add .
